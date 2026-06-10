@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tail_del.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/08 14:16:35 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/09 17:14:39 by lenivorb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// --- icludes ---
+
+#include "lists.h"
+#include "lists_core.h"
+
+// --- DOC ---
+
+/*
+	... your comment here ...
+*/
+
+// --- prototype ---
+
+int	headless_clear_node(t_node **node, void (*del_content)(void*));
+
+// --- define ---
+
+/*	...you comment... */
+
+int	headless_clear_node(t_node **node, void (*del_content)(void*))
+{
+	int idx;
+
+	if (!node)
+		return (-1);
+	idx = rm_node(*node)
+	*node = NULL;
+	return (idx);
+}
