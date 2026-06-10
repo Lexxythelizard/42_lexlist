@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 20:26:46 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 21:14:19 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:28:50 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_node	del_node(t_node *node, void (*rm_content)(void*))
 {
 	if ((!(node)) || (!(rm_content)))
 		return (-1);
-	if (!((node) -> content))
+	if (!(node -> content))
 		return (-1);
 	rm_content(node -> content);
 	node -> content = NULL;
@@ -120,7 +120,7 @@ int	rm_node(t_node *node, void (*rm_content)(void*))
 
 	if ((!(node)) || (!(rm_content)))
 		return (-1);
-	if (!((node) -> content))
+	if (!(node -> content))
 		return (-1);
 	idx = node -> idx;
 	del_node(node, rm_content);

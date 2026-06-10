@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tail_del.c                                         :+:      :+:    :+:   */
+/*   headless_clear_node.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 14:16:35 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/09 17:14:39 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:26:04 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	headless_clear_node(t_node **node, void (*del_content)(void*));
 
 int	headless_clear_node(t_node **node, void (*del_content)(void*))
 {
-	int idx;
+	int	idx;
 
 	if (!node)
 		return (-1);
-	idx = rm_node(*node)
+	idx = rm_node(*node);
 	*node = NULL;
 	return (idx);
 }

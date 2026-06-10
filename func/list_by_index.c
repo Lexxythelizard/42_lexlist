@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   headless_add_front.c                               :+:      :+:    :+:   */
+/*   list_by_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/10 18:25:15 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:25:17 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/10 16:29:34 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/10 18:22:21 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
 #include "lists.h"
-#include "core_list.h"
+#include "lexlist.h"
+#include "list_core.h"
 
 // --- DOC ---
 
@@ -23,15 +24,24 @@
 
 // --- prototype ---
 
-t_node	*headless_add_front(t_node **node, t_node *new);
+void	*list_by_index(t_head *head, int idx);
 
 // --- define ---
 
-t_node	*headless_add_front(t_node **node, t_node *new)
+/* ...comment...*/
+
+void	*list_by_index(t_head *head, int idx)
 {
-	if ((!node) || (!new))
+	t_node	*ptr;
+
+	if ((!head) || (idx < 0) || (idx > head -> len - 1))
 		return (NULL);
-	new -> next = *node;
-	*node = new;
-	return (new);
+	ptr = head -> tail;
+	while (ptr)
+	{
+		if (idx == ptr -> idx)
+			return (ptr -> content);
+		ptr = ptr -> next;
+	}
+	return (ptr);
 }

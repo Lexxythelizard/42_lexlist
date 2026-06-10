@@ -6,12 +6,12 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:52:46 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/08 15:55:37 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:33:22 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef LISTS_H
+# define LISTS_H
 
 // --- DOC ---
 
@@ -60,9 +60,9 @@ typedef struct s_basic_func
 
 typedef struct s_del_func
 {
-	void	*(del_info)(void*),
-	void	*(del_content)(void*),
-}			t_delfunf
+	void	*(del_info)(void*);
+	void	*(del_content)(void*);
+}			t_delfunc;
 
 // --- end ---
 
