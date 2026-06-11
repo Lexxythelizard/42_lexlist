@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 18:27:43 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:27:45 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:30:27 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 // --- prototype ---
 
-t_head	*init_head(t_head *new, void *info, void *basicfunc);
-t_head	*init_head(t_head *new, void *info, void *basicfunc);
-t_head	*init_new_head(void *info, void *basicfunc);
+t_head	*init_empty_head(void);
+t_head	*init_head(t_head *new, void *info, t_basicfunc *basicfunc);
+t_head	*init_new_head(void *info, t_basicfunc *basicfunc);
 t_head	*del_head(t_head *head, void (*del_info)(void*));
 int		rm_head(t_head *head, void (*del_info)(void*));
 
@@ -43,25 +43,27 @@ t_head	*init_empty_head(void)
 	new -> info = NULL;
 	new -> basicfunc = NULL;
 	new -> specifunc = NULL;
+	new -> delfunc = NULL;
 	new -> tail = NULL;
+	new -> tip = NULL;
 	return (new);
 }
 
 /*	...you comment... */
 
-t_head	*init_head(t_head *new, void *info, void *basicfunc)
+t_head	*init_head(t_head *new, void *info, t_basicfunc *basicfunc)
 {
 	if ((!(new)) || (!(info)) || (!(basicfunc)))
 		return (NULL);
 	new -> info = info;
-	new -> basicfunc = func;
+	new -> basicfunc = basicfunc;
 	new -> len = 0;
 	return (new);
 }
 
 /*	...you comment... */
 
-t_head	*init_new_head(void *info, void *basicfunc)
+t_head	*init_new_head(void *info, t_basicfunc *basicfunc)
 {
 	t_head	new;
 

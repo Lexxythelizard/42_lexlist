@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   headless_clear_list.c                              :+:      :+:    :+:   */
+/*   obj_rm.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/08 14:16:35 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/09 17:14:39 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/11 15:33:34 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/11 16:44:53 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
 #include "lists.h"
-#include "lists_core.h"
+#include "list_core.h"
+#include "methods.h"
 
 // --- DOC ---
 
@@ -23,36 +24,22 @@
 
 // --- prototype ---
 
-int	headless_clear_list(t_node **node, void (*del_content));
+int	obj_rm(t_head *head);
 
 // --- define ---
 
-/*	...you comment... */
-
-int	headless_clear_list(t_node **node, void (*del_content))
+int	obj_rm(t_head **head)
 {
-	int		del_nodes;
-	t_node	*ptr0;
-	t_node	*ptr1;
+	int	len;
 
-	if (!node)
+	if ((!head) || (!(*head)))
 		return (-1);
-	ptr0 = *node;
-	if (!ptr0)
-		return (0);
-	del_nodes = 1;
-	while (ptr0 -> next)
-	{
-		ptr1 = ptr0 -> next;
-		rm_node(ptr0, del_content);
-		ptr0 = ptr1;
-		del_nodes++;
-	}
-	if (del_nodes > 1)
-	{
-		rm_node(ptr0, del_content);
-		del_nodes++;
-	}
-	headless_clear_node(node, del_content);
-	return (del_nodes);
+	len = head -> len;
+	// call del info
+	// call del tail
+	// call del specifunc
+	// call del basicfunc
+	// call del del
+	// rm object
+	return (len);
 }

@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/10 19:30:37 by lenivorb          #+#    #+#              #
-#    Updated: 2026/06/10 20:01:41 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/06/11 13:51:11 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,11 @@ Headl_Dir	= 	./headless
 
 Func_Dir	= 	./func
 
+Core_Dir	= 	./struct
+
 # headers
 
-Includes 	= 	lexlist.h
+User_Lib 	= 	lexlist.h
 
 Incl_Core	=	$(Core_Dir)
 
@@ -52,7 +54,7 @@ Incl_Headl	=	$(Headl_Dir)/backend
 
 Incl_Lib	=	.
 
-Incl_Struct	=	$(Core_Dir)
+Incl_Struct	=	$(Struct_Dir)
 
 # soruce files
 
@@ -121,7 +123,7 @@ $(Obj_Func): %.o: %.c
 
 all : $(NAME)
 
-re : fclean $(NAME)
+re : fclean all
 
 fclean: clean
 	rm -f $(NAME)
@@ -139,9 +141,7 @@ clean_func:
 
 # -------------------- library --------------------
 
-# !!! UNDER CONSTRUCTION !!!
-
-$(NAME) : $(Objects) $(Includes)
+$(NAME) : $(Objects) $(User_Lib)
 	ar rcs $(NAME) $(Objects)
 
 # -------------------- object files --------------------

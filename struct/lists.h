@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:52:46 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:33:22 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:21:59 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,18 @@ typedef struct s_head
 	s_del_func		*del;
 	void			*specifunc;
 	s_node			*tail;
+	s_node			*tip;
 }					t_head;
 
 // basic func
 
 typedef struct s_basic_func
 {
-	void	*(*append)(s_node**, void*);
-	void	*(*by_index)(s_node*, int);
-	void	*(*last)(s_node*);
-	void	*(*pop)(s_node**);
+	int		*(*append)(s_head*, void*);
+	void	*(*get)(s_head*, int);
+	int		(*insert)(t_head*, void*, int);
+	void	*(pop_idx)(s_head*, int);
+	void	*(*pop)(s_head*);
 }			t_basicfunc;
 
 typedef struct s_del_func

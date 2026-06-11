@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:59:32 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:34:47 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:30:35 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,22 @@
 
 // --- prototype ---
 
-void	headless_add_back(t_node **node, t_node *new);
-void	headless_add_front(t_node **node, t_node *new);
-t_node	*headless_by_idx(t_node *node, int idx);
-t_node	*headless_last(t_node *node);
-t_node	*headless_pop_by_index(t_node **node, int idx);
-t_node	*headless_pop(t_node **node);
+t_basicfunc	*list_assign_basicfunc(void);
+t_head		*init_lexlist(void);
 
-int		headless_clear_node(t_node **node, void (*del_content)(void*));
-int		headless_clear_list(t_node **node, void (*del_content));
-t_node	*headless_cut(t_node **node, int idx);
-int		headless_reindex(t_node *first);
-int		headless_count(t_node *node);
+void		headless_add_back(t_node **node, t_node *new);
+void		headless_add_front(t_node **node, t_node *new);
+t_node		*headless_by_idx(t_node *node, int idx);
+t_node		*headless_last(t_node *node);
+t_node		*headless_pop_by_index(t_node **node, int idx);
+t_node		*headless_pop(t_node **node);
+
+int			headless_clear_node(t_node **node, void (*del_content)(void*));
+int			headless_clear_list(t_node **node, void (*del_content));
+t_node		*headless_cut(t_node **node, int idx);
+int			headless_reindex(t_node *first);
+int			headless_count(t_node *node);
+
 // --- end ---
 
 #endif
