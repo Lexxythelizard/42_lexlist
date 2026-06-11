@@ -16,13 +16,23 @@
 
 NAME		= 	./lexlist.a
 
+# MODE
+
+DEBUGG_MODE	=	0
+
 # for compile
 
 Compile 	= 	cc
 
 Flags 		= 	-Wall -Wextra -Werror
 
+Include 	= 	-I
+
 Dont_link 	= 	-c
+
+Dest	 	= 	-o
+
+Debugg_mode	=	-g
 
 # directories
 
@@ -36,7 +46,13 @@ Func_Dir	= 	./func
 
 Includes 	= 	lexlist.h
 
-Include 	= 	-I $(Includes)
+Incl_Core	=	$(Core_Dir)
+
+Incl_Headl	=	$(Headl_Dir)/backend
+
+Incl_Lib	=	.
+
+Incl_Struct	=	$(Core_Dir)
 
 # soruce files
 
@@ -66,11 +82,46 @@ Obj_Headl 	=	$(Src_Headl:.c=.o)
 
 Obj_Func	=	$(Src_Func:.c=.o)
 
+Objects		=	$(Obj_Core) $(Obj_Headl) $(Obj_Func)
+
+# -------------------- include rules --------------------
+
+INCL_CORE	=	$(Include) $(Incl_Core) $(Include) $(Incl_Struct)
+
+INCL_HEADL	=	$(Include) $(Incl_Struct) $(Include) $(Incl_Core) \
+				$(Include) $(Incl_Headl)
+
+INCL_FUNC	=	$(Include) $(Incl_Struct) $(Include) $(Incl_Core) \
+				$(Include) $(Incl_Headl) $(Include) $(Incl_Func)
+
+# -------------------- compile rules --------------------
+
+$(Obj_Core): %.o: %.c
+	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
+		$(Compile) $(Flags) $(Dont_link) $(Debugg_mode) $(INCL_CORE) $< $(Dest) $@; \
+	else \
+		$(Compile) $(Flags) $(Dont_link) $(INCL_CORE) $< $(Dest) $@; \
+	fi
+
+$(Obj_Headl): %.o: %.c
+	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
+		$(Compile) $(Flags) $(Dont_link) $(Debugg_mode) $(INCL_HEADL) $< $(Dest) $@; \
+	else \
+		$(Compile) $(Flags) $(Dont_link) $(INCL_HEADL) $< $(Dest) $@; \
+	fi
+
+$(Obj_Func): %.o: %.c
+	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
+		$(Compile) $(Flags) $(Dont_link) $(Debugg_mode) $(INCL_FUNC) $< $(Dest) $@; \
+	else \
+		$(Compile) $(Flags) $(Dont_link) $(INCL_FUNC) $< $(Dest) $@; \
+	fi
+
 # -------------------- commands --------------------
 
 all : $(NAME)
 
-re : fclean $(name)
+re : fclean $(NAME)
 
 fclean: clean
 	rm -f $(NAME)
@@ -97,18 +148,15 @@ $(NAME) : $(Objects) $(Includes)
 
 # --------> Core
 
-create_core: $(Src_Core) $(Includes_Core)
-	echo "under construction"
+create_core: $(Obj_Core)
 
 # --------> Headless
 
-create_headl: $(Src_Headl) $(Includes_Headl)
-	echo "under construction"
+create_headl: $(Obj_Headl)
 
 # --------> List
 
-create_func: $(Src_Func) $(Includes_Func)
-	echo "under construction"
+create_func: $(Obj_Func)
 
 # -------------------- PHONY --------------------
 

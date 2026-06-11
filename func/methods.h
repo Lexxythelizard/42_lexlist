@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXLIST_H
-# define LEXLIST_H
+#ifndef METHODS_H
+# define METHODS_H
 
 // --- include ---
 
@@ -25,18 +25,13 @@
 
 // --- prototype ---
 
-void	headless_add_back(t_node **node, t_node *new);
-void	headless_add_front(t_node **node, t_node *new);
-t_node	*headless_by_idx(t_node *node, int idx);
-t_node	*headless_last(t_node *node);
-t_node	*headless_pop_by_index(t_node **node, int idx);
-t_node	*headless_pop(t_node **node);
+/*following six functions need to get implemented (not in headless)*/
+int		list_append(t_head *head, void *content);
+void	*list_by_idx(t_head *head, int idx);
+int		list_insert(t_head *head, void *content, int idx);
+void	*list_pop_by_index(t_head *head, int idx);
+void	*list_pop(t_head *head);
 
-int		headless_clear_node(t_node **node, void (*del_content)(void*));
-int		headless_clear_list(t_node **node, void (*del_content));
-t_node	*headless_cut(t_node **node, int idx);
-int		headless_reindex(t_node *first);
-int		headless_count(t_node *node);
 // --- end ---
 
 #endif
