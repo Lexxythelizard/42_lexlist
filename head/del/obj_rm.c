@@ -19,15 +19,19 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+	TODO:
+		- implement another util tail strip
+		- implement lexlist__del
+		- implement lexlist__remove
+		- implement lexlist__strip
+		- implement lexlist__del_simple		\___ just parse free as function
+		- implement lexlist__remove_simple  /
 */
 
 // --- prototype ---
 
 void		*list_strip(t_head *head);
 int			list_rm(t_head *head);
-static void	del_info(t_head *head);
-static void	del_funct(void);
 static void	del_tail(t_head *head);
 
 // --- define ---
@@ -38,50 +42,40 @@ void	*list_strip(t_head *head)
 	t_node	*ptr;
 	int		i;
 
-	if (!head)
+	if ((!head) || (!(*head)))
 		return (NULL);
-	if (!(head -> info))
-		return (NULL);
-	strip = calloc(((head -> len) + 1) * 8);
-	while ((i < head -> len) && (head -> tail))
+	i = 0;
+	del_info(*head);
+	strip = calloc((((*head)->len) + 1) * 8);
+	while ((i < ((*head)->len)) && ((*head)->tail))
 	{
-		ptr = head -> tail -> next;
-		strip[i] = head -> tail -> content;
-		free(head -> tail);
-		head -> tail = ptr;
+		ptr = (*head)->tail -> next;
+		strip[i] = (*head)->tail -> content;
+		free((*head)->tail);
+		(*head)->tail = ptr;
 		i++;
 	}
-	head -> len = 0;
-	head -> tip = NULL;
+	del_func(*head);
+	free(*head);
+	*head = NULL;
 	return (strip);
 }
 
-int	list_rm(t_head **head)
+int	list_rm(t_head **self, void (*rm_info)(void*), void (*rm_content)(void*))
 {
 	int	len;
 
-	if ((!head) || (!(*head)))
+	if ((!self) || (!(*self)))
 		return (-1);
-	len = head -> len;
-	del_info(*head);
-	del_tail(*head);
-	del_func(*head);
-	free(*head);
-	*head = NULL
+	del_tail(*self, rm_content);
+	len = rm_head(*self, rm_info)
+	*self = NULL
 	return (len);
 }
 
-static void	del_info(t_head *head)
-{
-	if (!head)
-		return ;
-	if (!(head -> info))
-		return ;
-	head -> del -> del_info(head -> info);
-	head -> info = NULL;
-}
+/*	...comment...*/
 
-static void	del_tail(t_head *head)
+static void	del_tail(t_head *head, void (*rm_content)(void*))
 {
 	t_node	*ptr;
 
@@ -93,30 +87,11 @@ static void	del_tail(t_head *head)
 	while (head -> tail)
 	{
 		ptr = head -> tail -> next;
-		head -> del -> del_content(head -> tail -> content);
+		rm_node(head -> tail, rm_content);
 		head -> tail = ptr;
 	}
 	head -> tip = NULL;
 	head - > len = 0;
 }
 
-static void	del_func(t_head *head)
-{
-	if (!head)
-		return ;
-	if (head -> speci)
-	{
-		head -> del -> speci(head -> specifunc);
-		head -> specifunc = NULL;
-	}
-	if (head -> basicfunc)
-	{
-		free(head -> basicfunc);
-		head -> basicfunc = NULL;
-	}
-	if (head -> del)
-	{
-		free(head -> del);
-		head -> del = NULL;
-	}
-}
+/* strip tail  */

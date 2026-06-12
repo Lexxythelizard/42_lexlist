@@ -23,7 +23,6 @@
 
 struct	s_node;
 struct	s_head;
-struct	s_basic_func;
 
 // --- struct ---
 
@@ -40,31 +39,14 @@ typedef struct s_node
 
 typedef struct s_head
 {
-	int				len;
-	void			*info;
-	s_basic_func	*basicfunc;
-	s_del_func		*del;
-	void			*specifunc;
-	s_node			*tail;
-	s_node			*tip;
-}					t_head;
-
-// basic func
-
-typedef struct s_basic_func
-{
-	int		*(*append)(s_head*, void*);
-	void	*(*get)(s_head*, int);
-	int		(*insert)(t_head*, void*, int);
-	void	*(pop_idx)(s_head*, int);
-	void	*(*pop)(s_head*);
-}			t_basicfunc;
-
-typedef struct s_del_func
-{
-	void	*(del_info)(void*);
-	void	*(del_content)(void*);
-}			t_delfunc;
+	int		len;
+	void	*info;
+	void	*del_content;
+	void	*del_info;
+	void	*specifunc;
+	s_node	*tail;
+	s_node	*tip;
+}			t_head;
 
 // --- end ---
 

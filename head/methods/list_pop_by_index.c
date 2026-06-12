@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_insert.c                                      :+:      :+:    :+:   */
+/*   list_pop_by_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/10 17:39:22 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:22:42 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/10 16:41:30 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/10 18:23:21 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,33 @@
 
 // --- prototype ---
 
-int	list_insert(t_head *head, void *content, int idx);
+void	*lexlist__pop_idx(t_head *self, int idx);
 
 // --- define ---
 
-int	list_insert(t_head *head, void *content, int idx)
+void	*lexlist__pop_idx(t_head *self, int idx)
 {
+	void	*content;
+	t_node	*ptr;
 	t_node	*ptr_pre;
-	t_node	*new;
 
-	if ((!head) || (!content) || (idx < 0) || (idx > head -> len))
-		return (-1);
-	if (idx == head -> len)
-		return (list_append(head, content));
-	new = init_new_node(content, 0);
-	if (!new)
-		return (-1);
+	if ((!self) || (idx < 0) || (idx >= self -> len))
+		return (NULL);
+	if ((!(self -> tail)) || (!(self -> tip)))
+		return (NULL);
+	if (idx == (self -> len - 1))
+		return (list_pop(self));
+	ptr = headless_by_idx(self -> tail, idx);
+	ptr_pre = headless_by_idx(self -> tail, (idx - 1));
+	if ((!ptr) || !(ptr_pre))
+		return (NULL);
 	if (!idx)
-		headless_add_front(&(head -> tail), new);
+		self -> tail = ptr -> next;
 	else
-	{
-		new -> next = headless_by_idx(head -> tail, idx);
-		ptr_pre = headless_by_idx(head -> tail, (idx - 1));
-		ptr_pre -> next = new;
-	}
-	head -> len = headless_reindex(head -> tail);
-	return (head -> len);
+		ptr_pre -> next = ptr -> next;
+	content = ptr -> content;
+	free(ptr);
+	self -> len--;
+	headless_reindex(self -> tail);
+	return (content);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_init_obj.c                                    :+:      :+:    :+:   */
+/*   list_last.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 14:27:59 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 16:29:57 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/10 16:41:30 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/10 17:10:47 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
 #include "lists.h"
+#include "lexlist.h"
 #include "list_core.h"
-#include "methods.h"
 
 // --- DOC ---
 
@@ -24,16 +24,33 @@
 
 // --- prototype ---
 
-t_head	*init_lexlist(void);
+void	*lexlist__pop(t_head *self);
 
 // --- define ---
 
-t_head	*init_lexlist(void)
+void	*lexlist__pop(t_head *self)
 {
-	t_head	*new;
+	void	*content;
+	t_node	*ptr;
 
-	new = init_new_head(info, list_assign_basicfunc());
-	if (!new)
+	if (!self)
 		return (NULL);
-	return (new);
+	if ((!(self -> tail)) || (!(self -> tip)))
+		return (NULL);
+	ptr = self -> tail;
+	content = self -> tip -> content;
+	self -> len--;
+	if (self -> tail == self -> tip)
+	{
+		free (self -> tail);
+		self -> tail = NULL;
+		self -> tip = NULL;
+		return (content);
+	}
+	while (ptr -> next != self -> tail)
+		ptr = ptr -> next;
+	ptr -> next = NULL;
+	free (self -> tip);
+	self -> tip = ptr;
+	return (content);
 }

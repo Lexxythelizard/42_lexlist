@@ -37,20 +37,6 @@ t_node		*init_node(t_node *node, void *content, int idx);
 t_node		*init_new_list(void *content);
 t_node		*del_node(t_node *node, void (*rm_content)(void*));
 int			rm_node(t_node *node, void (*rm_content)(void*));
-// basicfunc utils
-t_basicfunc	*init_empty_basicfunc(void);
-t_basicfunc	*init_basicfunc(t_basicfunc *new,
-				void *(*append)(t_node**, void*),
-				void *(*by_index)(s_node*, int),
-				void *(*last)(s_node*),
-				void *(*pop)(s_basic_func**));
-t_basicfunc	*init_new_basicfunc(
-				void *(*append)(t_node**, void*),
-				void *(*by_index)(s_node*, int),
-				void *(*last)(s_node*),
-				void *(*pop)(s_basic_func**));
-t_basicfumc	*del_basicfunc(t_basicfunc *basicfunc);
-int			rm_basicfunc(t_basicfunc **basicfunc);
 
 // --- end ---
 
