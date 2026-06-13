@@ -58,8 +58,7 @@ int		lexlist__remove(
 
 void	*lexlist__strip(
 			t_head **self,
-			void (*rm_info)(void*),
-			void (*rm_content)(void*));
+			void (*rm_info)(void*));
 
 int		lexlist__del_simple(
 			t_head *self);
