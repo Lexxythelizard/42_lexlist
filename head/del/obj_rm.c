@@ -75,7 +75,7 @@ int	list_rm(t_head **self, void (*rm_info)(void*), void (*rm_content)(void*))
 
 /*	...comment...*/
 
-static void	del_tail(t_head *head, void (*rm_content)(void*))
+void	del_tail(t_head *head, void (*rm_content)(void*))
 {
 	t_node	*ptr;
 
