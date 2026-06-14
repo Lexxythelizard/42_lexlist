@@ -40,7 +40,7 @@ This_Dir	=	.
 
 Core_Dir	= 	$(This_Dir)/core
 
-Struc_Dir	= 	$(This_Dir)/struct
+Struct_Dir	= 	$(This_Dir)/struct
 
 Headl_Dir	= 	$(This_Dir)/headless
 
@@ -68,7 +68,7 @@ Src_Core	=	$(Core_Dir)/nodes.c \
 				$(Core_Dir)/heads.c
 
 Src_Headl	=	$(Headl_Dir)/headless_add_back.c \
-				$(Headl_Dir)/headless_add_fornt.c \
+				$(Headl_Dir)/headless_add_front.c \
 				$(Headl_Dir)/headless_by_idx.c \
 				$(Headl_Dir)/headless_clear_list.c \
 				$(Headl_Dir)/headless_clear_node.c \

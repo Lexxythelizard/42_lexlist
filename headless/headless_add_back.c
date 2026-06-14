@@ -32,7 +32,7 @@ void	headless_add_back(t_node **node, t_node *new);
 
 void	headless_add_back(t_node **node, t_node *new)
 {
-	t_node	ptr;
+	t_node	*ptr;
 
 	if ((!node) || (!new))
 		return ;
@@ -43,7 +43,7 @@ void	headless_add_back(t_node **node, t_node *new)
 		return ;
 	}
 	while (ptr -> next)
-		ptr = -> next;
+		ptr = ptr -> next;
 	ptr -> next = new;
 	headless_reindex(*node);
 }

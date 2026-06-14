@@ -15,7 +15,8 @@
 
 // --- include ---
 
-# include "lists.h"
+# include "./struct/lists.h"
+# include <stddef.h>
 
 // --- DOC ---
 
@@ -75,7 +76,7 @@ void	headless_add_back(
 			t_node **node,
 			t_node *new);
 
-void	headless_add_front(
+t_node	*headless_add_front(
 			t_node **node,
 			t_node *new);
 

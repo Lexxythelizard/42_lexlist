@@ -44,7 +44,7 @@ int	headless_reindex(t_node *first)
 	while (ptr -> next)
 	{
 		i++;
-		ptr = node -> next;
+		ptr = first -> next;
 		ptr -> idx = i;
 	}
 	return (i);

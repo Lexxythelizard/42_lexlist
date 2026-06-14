@@ -34,9 +34,9 @@ int	headless_clear_node(t_node **node, void (*del_content)(void*))
 {
 	int	idx;
 
-	if (!node)
+	if ((!node) || (!del_content))
 		return (-1);
-	idx = rm_node(*node);
+	idx = rm_node(*node, del_content);
 	*node = NULL;
 	return (idx);
 }
