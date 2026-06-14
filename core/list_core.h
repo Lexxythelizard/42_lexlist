@@ -15,7 +15,8 @@
 
 // --- include ---
 
-# include "lists.h"
+# include "../struct/lists.h"
+# include <stdlib.h>
 
 // --- DOC ---
 
@@ -26,9 +27,9 @@
 // --- prototype ---
 
 // head utils
-t_head		*init_head(t_head *new, void *info, void *basicfunc);
-t_head		*init_head(t_head *new, void *info, void *basicfunc);
-t_head		*init_new_head(void *info, void *basicfunc);
+t_head		*init_head(t_head *new, void *info);
+t_head		*init_head(t_head *new, void *info);
+t_head		*init_new_head(void *info);
 t_head		*del_head(t_head *head, void (*del_info)(void*));
 int			rm_head(t_head *head, void (*del_info)(void*));
 // node utils

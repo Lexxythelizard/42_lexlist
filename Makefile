@@ -64,9 +64,8 @@ Incl_Headl	=	$(Include) $(Headl_Dir)
 
 # soruce files
 
-Src_Core	=	$(Core_Dir)/core/nodes.c \
-				$(Core_Dir)/core/heads.c \
-				$(Core_Dir)/core/basicfunc.c
+Src_Core	=	$(Core_Dir)/nodes.c \
+				$(Core_Dir)/heads.c
 
 Src_Headl	=	$(Headl_Dir)/headless_add_back.c \
 				$(Headl_Dir)/headless_add_fornt.c \

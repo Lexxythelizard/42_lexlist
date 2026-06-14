@@ -30,23 +30,20 @@ struct	s_head;
 
 typedef struct s_node
 {
-	int		idx;
-	void	*content;
-	t_node	*next;
-}			t_node;
+	int				idx;
+	void			*content;
+	struct s_node	*next;
+}					t_node;
 
 // head
 
 typedef struct s_head
 {
-	int		len;
-	void	*info;
-	void	*del_content;
-	void	*del_info;
-	void	*specifunc;
-	s_node	*tail;
-	s_node	*tip;
-}			t_head;
+	int				len;
+	void			*info;
+	struct s_node	*tail;
+	struct s_node	*tip;
+}					t_head;
 
 // --- end ---
 

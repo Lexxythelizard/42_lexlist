@@ -12,8 +12,8 @@
 
 // --- icludes ---
 
-#include "list_core.h"
 #include "../struct/lists.h"
+#include "list_core.h"
 
 // --- DOC ---
 
@@ -47,6 +47,7 @@ t_node	*init_empty(void)
 	new -> idx = -1;
 	new -> content = NULL;
 	new -> next = NULL;
+	return (new);
 }
 
 /*
@@ -93,15 +94,16 @@ RETURN:
 	pointer to node
 */
 
-t_node	del_node(t_node *node, void (*rm_content)(void*))
+t_node	*del_node(t_node *node, void (*rm_content)(void*))
 {
 	if ((!(node)) || (!(rm_content)))
-		return (-1);
+		return (NULL);
 	if (!(node -> content))
-		return (-1);
+		return (NULL);
 	rm_content(node -> content);
 	node -> content = NULL;
 	node -> idx = (-1);
+	return (node);
 }
 
 /*

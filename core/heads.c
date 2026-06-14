@@ -12,8 +12,8 @@
 
 // --- icludes ---
 
-#include "list_core.h"
 #include "../struct/lists.h"
+#include "list_core.h"
 
 // --- DOC ---
 
@@ -24,8 +24,8 @@
 // --- prototype ---
 
 t_head	*init_empty_head(void);
-t_head	*init_head(t_head *new, void *info, t_basicfunc *basicfunc);
-t_head	*init_new_head(void *info, t_basicfunc *basicfunc);
+t_head	*init_head(t_head *new, void *info);
+t_head	*init_new_head(void *info);
 t_head	*del_head(t_head *head, void (*del_info)(void*));
 int		rm_head(t_head *head, void (*del_info)(void*));
 
@@ -35,16 +35,13 @@ int		rm_head(t_head *head, void (*del_info)(void*));
 
 t_head	*init_empty_head(void)
 {
-	t_head	new;
+	t_head	*new;
 
-	new = malloc(40);
+	new = malloc(32);
 	if (!(new))
 		return (NULL);
 	new -> len = (-1);
 	new -> info = NULL;
-	new -> basicfunc = NULL;
-	new -> specifunc = NULL;
-	new -> delfunc = NULL;
 	new -> tail = NULL;
 	new -> tip = NULL;
 	return (new);
@@ -52,26 +49,25 @@ t_head	*init_empty_head(void)
 
 /*	...you comment... */
 
-t_head	*init_head(t_head *new, void *info, t_basicfunc *basicfunc)
+t_head	*init_head(t_head *new, void *info)
 {
-	if ((!(new)) || (!(info)) || (!(basicfunc)))
+	if ((!(new)) || (!(info)))
 		return (NULL);
 	new -> info = info;
-	new -> basicfunc = basicfunc;
 	new -> len = 0;
 	return (new);
 }
 
 /*	...you comment... */
 
-t_head	*init_new_head(void *info, t_basicfunc *basicfunc)
+t_head	*init_new_head(void *info)
 {
-	t_head	new;
+	t_head	*new;
 
-	if ((!(info)) || (!(basic_func)))
+	if (!(info))
 		return (NULL);
 	new = init_empty_head();
-	return (init_head(new, info, basicfunc));
+	return (init_head(new, info));
 }
 
 /*	...you comment... */
@@ -83,8 +79,6 @@ t_head	*del_head(t_head *head, void (*del_info)(void*))
 	if (head -> info)
 		del_info(head -> info);
 	head -> info = NULL;
-	head -> basicfunc = NULL;
-	head -> specifunc = NULL;
 	head -> len = (-1);
 	return (head);
 }
