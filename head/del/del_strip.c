@@ -23,15 +23,13 @@
 
 // --- prototype ---
 
-static void	*strip_tail(t_head *head);
+static void	**strip_tail(t_head *head);
 
 // --- define ---
 
-void	*lexlist__strip(t_head **self, void (*rm_info)(void*))
+void	**lexlist__strip(t_head **self, void (*rm_info)(void*))
 {
-	void	*strip;
-	t_node	*ptr;
-	int		i;
+	void	**strip;
 
 	if ((!self) || (!(*self)) || (!rm_info))
 		return (NULL);
@@ -45,18 +43,20 @@ void	*lexlist__strip(t_head **self, void (*rm_info)(void*))
 
 /*	...comment...*/
 
-static void	strip_tail(t_head *head)
+static void	**strip_tail(t_head *head)
 {
 	t_node	*ptr;
-	void	*strip;
+	void	**strip;
+	int		i;
 
 	if (!head)
-		return ;
+		return (NULL);
 	if (!(head -> tail))
-		return ;
-	strip = malloc(head -> len);
+		return (NULL);
+	i = 0;
+	strip = malloc((head -> len) * 8);
 	if (!strip)
-		return (NULL),
+		return (NULL);
 	ptr = head -> tail;
 	while ((head -> tail) && (i < (head -> len)))
 	{
@@ -67,6 +67,6 @@ static void	strip_tail(t_head *head)
 		i++;
 	}
 	head -> tip = NULL;
-	head - > len = 0;
+	head -> len = 0;
 	return (strip);
 }

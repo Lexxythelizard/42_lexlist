@@ -39,7 +39,7 @@ void	*lexlist__pop_idx(t_head *self, int idx)
 	if ((!(self -> tail)) || (!(self -> tip)))
 		return (NULL);
 	if (idx == (self -> len - 1))
-		return (list_pop(self));
+		return (lexlist__pop(self));
 	ptr = headless_by_idx(self -> tail, idx);
 	ptr_pre = headless_by_idx(self -> tail, (idx - 1));
 	if ((!ptr) || !(ptr_pre))

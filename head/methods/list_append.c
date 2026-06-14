@@ -30,14 +30,14 @@ int	lexlist__append(t_head *self, void *content);
 
 int	lexlist__append(t_head *self, void *content)
 {
-	int		i;
 	t_node	*new;
 
 	if ((!self) || (!content))
 		return (-1);
-	new = init_new_node(content, self -> len);
+	new = init_empty_node();
 	if (!new)
 		return (-1);
+	init_node(new, content, self -> len);
 	if (self -> len)
 		self -> tip -> next = new;
 	else

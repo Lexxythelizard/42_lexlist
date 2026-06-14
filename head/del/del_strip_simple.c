@@ -23,7 +23,7 @@
 
 // --- define ---
 
-void	*lexlist__strip(t_head **self)
+void	**lexlist__strip_simple(t_head **self)
 {
 	return (lexlist__strip(self, &free));
 }

@@ -23,9 +23,9 @@
 
 // --- prototype ---
 
-t_node	*init_empty(void);
+t_node	*init_empty_node(void);
 t_node	*init_node(t_node *node, void *content, int idx);
-t_node	*init_new_list(void *content);
+t_node	*init_new_node(void *content);
 t_node	*del_node(t_node *node, void (*rm_content)(void*));
 int		rm_node(t_node *node, void (*rm_content)(void*));
 
@@ -37,7 +37,7 @@ init_empty() inits an empty node
 and returns a pointer to the empty node
 */
 
-t_node	*init_empty(void)
+t_node	*init_empty_node(void)
 {
 	t_node	*new;
 
@@ -74,13 +74,13 @@ takes pointer to content and set node -> idx = 0
 returns a pointer to the node of new list
 */
 
-t_node	*init_new_list(void *content)
+t_node	*init_new_node(void *content)
 {
 	t_node	*new;
 
 	if (!(content))
 		return (NULL);
-	new = init_empty();
+	new = init_empty_node();
 	return (init_node(new, content, 0));
 }
 

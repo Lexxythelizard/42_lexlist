@@ -23,7 +23,7 @@
 
 // --- prototype ---
 
-static void	del_tail(t_head *head);
+static void	del_tail(t_head *head, void (*rm_content)(void*));
 
 // --- define ---
 
@@ -34,10 +34,10 @@ int	lexlist__del(
 {
 	int	len;
 
-	if ((!self) || (!(*self)))
+	if (!self)
 		return (-1);
 	del_tail(self, rm_content);
-	len = rm_head(self, rm_info)
+	len = rm_head(self, rm_info);
 	return (len);
 }
 
@@ -59,5 +59,5 @@ static void	del_tail(t_head *head, void (*rm_content)(void*))
 		head -> tail = ptr;
 	}
 	head -> tip = NULL;
-	head - > len = 0;
+	head -> len = 0;
 }

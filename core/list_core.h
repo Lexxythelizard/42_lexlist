@@ -33,9 +33,9 @@ t_head		*init_new_head(void *info);
 t_head		*del_head(t_head *head, void (*del_info)(void*));
 int			rm_head(t_head *head, void (*del_info)(void*));
 // node utils
-t_node		*init_empty(void);
+t_node		*init_empty_node(void);
 t_node		*init_node(t_node *node, void *content, int idx);
-t_node		*init_new_list(void *content);
+t_node		*init_new_node(void *content);
 t_node		*del_node(t_node *node, void (*rm_content)(void*));
 int			rm_node(t_node *node, void (*rm_content)(void*));
 

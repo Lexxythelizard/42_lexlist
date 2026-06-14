@@ -33,13 +33,14 @@ int	lexlist__insert(t_head *self, void *content, int idx)
 	t_node	*ptr_pre;
 	t_node	*new;
 
-	if ((!self) || (!content) || (idx < 0) || (idx > head -> len))
+	if ((!self) || (!content) || (idx < 0) || (idx > self -> len))
 		return (-1);
 	if (idx == self -> len)
 		return (lexlist__append(self, content));
-	new = init_new_node(content, 0);
+	new = init_empty_node();
 	if (!new)
 		return (-1);
+	new = init_node(new, content, idx);
 	if (!idx)
 		headless_add_front(&(self -> tail), new);
 	else
@@ -48,6 +49,6 @@ int	lexlist__insert(t_head *self, void *content, int idx)
 		ptr_pre = headless_by_idx(self -> tail, (idx - 1));
 		ptr_pre -> next = new;
 	}
-	head -> len = headless_reindex(self -> tail);
+	self -> len = headless_reindex(self -> tail);
 	return (self -> len);
 }

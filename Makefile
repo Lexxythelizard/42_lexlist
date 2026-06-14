@@ -46,7 +46,7 @@ Headl_Dir	= 	$(This_Dir)/headless
 
 Head_Dir	= 	$(This_Dir)/head
 
-Method_Dir	= 	$(Head_Dir)/method
+Method_Dir	= 	$(Head_Dir)/methods
 
 Del_Dir		= 	$(Head_Dir)/del
 
@@ -136,7 +136,7 @@ re : fclean all
 fclean: clean
 	rm -f $(NAME)
 
-clean: clean_core clean_headl clean_func
+clean: clean_core clean_headl clean_head
 
 clean_core:
 	rm -f $(Obj_Core) $@

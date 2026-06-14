@@ -52,12 +52,12 @@ int		lexlist__del(
 			void (*rm_info)(void*),
 			void (*rm_content)(void*));
 
-int		lexlist__remove(
+int		lexlist__rm(
 			t_head **self,
 			void (*rm_info)(void*),
 			void (*rm_content)(void*));
 
-void	*lexlist__strip(
+void	**lexlist__strip(
 			t_head **self,
 			void (*rm_info)(void*));
 
@@ -67,7 +67,7 @@ int		lexlist__del_simple(
 int		lexlist__remove_simple(
 			t_head **self);
 
-void	*lexlist__strip_simple(
+void	**lexlist__strip_simple(
 			t_head **self);
 
 // headless function
