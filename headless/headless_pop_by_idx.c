@@ -12,8 +12,9 @@
 
 // --- icludes ---
 
-#include "list.h"
-#include "list_core.h"
+#include "../struct/lists.h"
+#include "../core/list_core.h"
+#include "../lexlist.h"
 
 // --- DOC ---
 

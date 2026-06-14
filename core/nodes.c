@@ -12,7 +12,8 @@
 
 // --- icludes ---
 
-#include "element_lists.h"
+#include "list_core.h"
+#include "../struct/lists.h"
 
 // --- DOC ---
 
