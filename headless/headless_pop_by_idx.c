@@ -39,7 +39,7 @@ t_node	*headless_pop_by_index(t_node **node, int idx)
 	popped = headless_by_idx(*node, idx);
 	if (idx)
 		(headless_by_idx(*node, (idx - 1)))-> next = popped -> next;
-	else 
+	else
 		(*node)->next = popped -> next;
 	popped -> next = NULL;
 	return (popped);
