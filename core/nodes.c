@@ -12,13 +12,18 @@
 
 // --- icludes ---
 
-#include "../struct/lists.h"
 #include "list_core.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+    This files contains the 'hidden' functions 
+    to interact with the struct t_node
+    includes 
+    - "../core/list_core.h"
+        - "../struct/lists.h"
+    following functions are used in library functions, but will not be
+    directly available in "lexlist" library
 */
 
 // --- prototype ---
@@ -32,7 +37,7 @@ int		rm_node(t_node *node, void (*rm_content)(void*));
 // --- func ---
 
 /*
-init_empty() inits an empty node 
+init_empty_node() inits an empty node 
 	{idx: -1, conten: NULL, next: NULL}
 and returns a pointer to the empty node
 */
@@ -60,16 +65,15 @@ t_node	*init_node(t_node *node, void *content, int idx)
 {
 	if ((!(node)) || (!(content)))
 		return (NULL);
-	if ((node -> content) || (node -> idx))
-		return (NULL);
 	node -> idx = idx;
 	node -> content = content;
 	return (node);
 }
 
 /*
-init_new_list() inits a new list 
-by calling init_empty() and init_node()
+init_new_node() inits a new node meant to be 
+first element of a new list
+by calling init_empty_node() and init_node()
 takes pointer to content and set node -> idx = 0
 returns a pointer to the node of new list
 */

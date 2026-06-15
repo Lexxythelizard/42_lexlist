@@ -14,7 +14,7 @@
 
 # library name
 
-NAME		= 	./lexlist.a
+NAME		= 	./liblexlist.a
 
 # MODE
 
@@ -138,6 +138,8 @@ fclean: clean
 
 clean: clean_core clean_headl clean_head
 
+test_lib: ./libcoretest.a
+
 clean_core:
 	rm -f $(Obj_Core) $@
 
@@ -149,8 +151,11 @@ clean_head:
 
 # -------------------- library --------------------
 
-$(NAME) : $(Objects) $(User_Lib)
+$(NAME): $(Objects)
 	ar rcs $(NAME) $(Objects)
+
+./libcoretest.a: $(Obj_Core)
+	ar rcs ./libcoretest.a $(Obj_Core)
 
 # -------------------- object files --------------------
 
