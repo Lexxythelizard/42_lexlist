@@ -23,12 +23,13 @@
 		- test	headless_init_new_list		:	WORKS
 		- test	headless_add_back			:	WORKS
 		- test	headless_add_front			:	WORKS
-		- test	headless_last				:	---
+		- test	headless_last				:	WORKS
+		- test	headless_by_idx				:	WORKS
 		- test	headless_pop_by_index		:	---
 		- test	headless_pop				:	---
 		- test	headless_clear_node/simple	:	---
 		- test	headless_clear_list/simple	:	---
-		- test	headless_cut				:	---
+		- test	headless_cut				:	WORKS
 		- test	headless_reindex			:	WORKS
 		- test	headless_count				:	WORKS
 */
@@ -51,6 +52,7 @@ int	main(int argc, char **argv)
 	t_node	*test1;
 	t_node	*test2;
 	t_node	*test3;
+	t_node	*temp0;
 
 	if (argc < 5)
 	{
@@ -80,6 +82,8 @@ int	main(int argc, char **argv)
 	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
 		test0 -> idx, (char*)(test0 -> content),
 		test0 -> next);
+
+	printf("------------------------------------------------\n");
 	printf("add test1 to the back: list_add_back()\n");
 	headless_add_back(&test0, test1);
 	printf("test 1: test node 0:\n");
@@ -90,6 +94,8 @@ int	main(int argc, char **argv)
 	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
 		test0 -> next -> idx, (char*)(test0 -> next -> content),
 		test0 -> next -> next);
+
+	printf("------------------------------------------------\n");
 	printf("add test2 to the front\n");
 	headless_add_front(&test0, test2);
 	printf("now test2 beomes the new test0, lets test it:\n");
@@ -108,17 +114,23 @@ int	main(int argc, char **argv)
 		test0 -> next -> next);
 	printf("now call list_add_back on a null pointer list\n");
 	headless_add_back(&test3, headless_init_new_list(inp3));
+
+	printf("------------------------------------------------\n");
 	printf("test 3: test node 3:\n");
 	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
 		test3 -> idx, (char*)(test3 -> content),
 		test3 -> next);
+
+	printf("------------------------------------------------\n");
 	printf("test 4: now test headless_count:\n");
 	printf("len from test node 0: %d\n", headless_count(test0));
 	printf("len from test node 3: %d\n\n", headless_count(test3));
 	
+	printf("------------------------------------------------\n");
 	printf("test 5: now test headless_reindex(test0):\n");
 	printf("output of func: %d\n\n", headless_reindex(test0));
 	
+	printf("------------------------------------------------\n");
 	printf("test 6: now review the results of the reindexed list:\n");
 	printf("test 6: test node 0:\n");
 	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
@@ -134,9 +146,55 @@ int	main(int argc, char **argv)
 		(char*)(test0 -> next -> next -> content),
 		test0 -> next -> next);
 
+	printf("------------------------------------------------\n");
+	printf("test 7: test headless_last and headless_get_by_index():\n");
+	temp0 = headless_last(test0);
+	printf("test 7: test headless_last(test0):\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		temp0 -> idx, (char*)(temp0 -> content),
+		temp0 -> next);
+	temp0 = headless_by_idx(test0, 1);
+	printf("test 7: test headless_by_idx(test0, 1):\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		temp0 -> idx, (char*)(temp0 -> content),
+		temp0 -> next);
+	temp0 = headless_by_idx(test3, 8);
+	printf("test 7: test headless_by_idx(test3, 8):\n");
+	printf("ptr: %p\n\n", temp0);
+
+	printf("------------------------------------------------\n");
+	printf("test 8: test headless cut:\n");
+	temp0 = headless_cut(&test0, 1);
+	printf("test 8: temp0 = headless_cut(&test0, 1)):\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		temp0 -> idx, (char*)(temp0 -> content),
+		temp0 -> next);
+	printf("append temp to test3 by using headless_add_back() and reindex\n");
+	headless_add_back(&test3, temp0);
+	headless_reindex(test3);
+	printf("test 8: test node 3:\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		test3 -> idx, (char*)(test3 -> content),
+		test3 -> next);
+	printf("test 8: test node 2 (test3 -> next):\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		test3 -> next -> idx, (char*)(test3 -> next -> content),
+		test3 -> next -> next);
+	printf("test 8: test node 1 (test2 -> next):\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		test3 -> next -> next -> idx,
+		(char*)(test3 -> next -> next -> content),
+		test3 -> next -> next);
+	printf("and now test0 should be one node");
+	printf("test 8: test node 0:\n");
+	printf("idx: %d\ninfo: %s\nnext: %p\n\n",
+		test0 -> idx, (char*)(test0 -> content),
+		test0 -> next);
+
 	printf("+++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 	lxy_free_four(inp0, inp1, inp2, inp3);
-	lxy_free_four_el(test0 -> next -> next, test0 -> next, test0, test3);
+	//lxy_free_four_el(test0 -> next -> next, test0 -> next, test0, test3);
+	lxy_free_four_el(test3 -> next -> next, test3 -> next, test3, test0);
 	return (0);
 }
 
