@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/10 19:30:37 by lenivorb          #+#    #+#              #
-#    Updated: 2026/06/11 13:51:11 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/06/15 17:11:00 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,8 +71,11 @@ Src_Headl	=	$(Headl_Dir)/headless_add_back.c \
 				$(Headl_Dir)/headless_add_front.c \
 				$(Headl_Dir)/headless_by_idx.c \
 				$(Headl_Dir)/headless_clear_list.c \
+				$(Headl_Dir)/headless_clear_list_simple.c \
 				$(Headl_Dir)/headless_clear_node.c \
+				$(Headl_Dir)/headless_clear_node_simple.c \
 				$(Headl_Dir)/headless_cut.c \
+				$(Headl_Dir)/headless_init_new_list.c \
 				$(Headl_Dir)/headless_last.c \
 				$(Headl_Dir)/headless_pop.c \
 				$(Headl_Dir)/headless_pop_by_idx.c \
@@ -80,6 +83,7 @@ Src_Headl	=	$(Headl_Dir)/headless_add_back.c \
 
 Src_Head	=	$(Method_Dir)/list_append.c \
 				$(Method_Dir)/list_by_index.c \
+				$(Method_Dir)/list_init.c \
 				$(Method_Dir)/list_insert.c \
 				$(Method_Dir)/list_pop.c \
 				$(Method_Dir)/list_pop_by_index.c \
