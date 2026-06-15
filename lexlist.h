@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:59:32 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 16:30:35 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/15 17:46:23 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 // --- prototype ---
 
+// create and interact
+
 int		lexlist__append(
 			t_head *self,
 			void *content);
@@ -33,6 +35,9 @@ int		lexlist__append(
 void	*lexlist__get(
 			t_head *self,
 			int idx);
+
+t_head	*lexlist__init(
+			void *info);
 
 int		lexlist__insert(
 			t_head *self,
@@ -45,7 +50,7 @@ void	*lexlist__pop_idx(
 void	*lexlist__pop(
 			t_head *self);
 
-// to implement
+// delete functions
 
 int		lexlist__del(
 			t_head *self,
@@ -71,6 +76,9 @@ void	**lexlist__strip_simple(
 			t_head **self);
 
 // headless function
+
+t_node	*headless_init_new_list(
+		void *content);
 
 void	headless_add_back(
 			t_node **node,
@@ -98,9 +106,15 @@ int		headless_clear_node(
 			t_node **node,
 			void (*del_content)(void*));
 
+int		headless_clear_node_simple(
+			t_node **node);
+
 int		headless_clear_list(
 			t_node **node,
 			void (*del_content));
+
+int		headless_clear_list_simple(
+			t_node **node);
 
 t_node	*headless_cut(
 			t_node **node,

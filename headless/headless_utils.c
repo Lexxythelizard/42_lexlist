@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 19:11:47 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:26:38 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/15 18:40:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	headless_reindex(t_node *first)
 	while (ptr -> next)
 	{
 		i++;
-		ptr = first -> next;
+		ptr = ptr -> next;
 		ptr -> idx = i;
 	}
-	return (i);
+	return (i + 1);
 }
 
 int	headless_count(t_node *node)
