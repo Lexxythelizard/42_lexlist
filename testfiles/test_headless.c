@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 17:15:32 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/15 18:50:30 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:10:02 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 
 /*
 	TODO:
-		- test	headless_init_new_list		:	WORKS
-		- test	headless_add_back			:	WORKS
-		- test	headless_add_front			:	WORKS
-		- test	headless_last				:	WORKS
-		- test	headless_by_idx				:	WORKS
-		- test	headless_pop_by_index		:	WORKS
-		- test	headless_pop				:	WORKS
-		- test	headless_clear_node/simple	:	WORKS
-		- test	headless_clear_list/simple	:	---
-		- test	headless_cut				:	WORKS
-		- test	headless_reindex			:	WORKS
-		- test	headless_count				:	WORKS
+		- test	headless_init_new_list		:	WORKS	VALGRIND PROOF
+		- test	headless_add_back			:	WORKS   VALGRIND PROOF
+		- test	headless_add_front			:	WORKS   VALGRIND PROOF
+		- test	headless_last				:	WORKS   VALGRIND PROOF
+		- test	headless_by_idx				:	WORKS   VALGRIND PROOF
+		- test	headless_pop_by_index		:	WORKS   VALGRIND PROOF
+		- test	headless_pop				:	WORKS   VALGRIND PROOF
+		- test	headless_clear_node/simple	:	WORKS   VALGRIND PROOF
+		- test	headless_clear_list/simple	:	WORKS   VALGRIND PROOF
+		- test	headless_cut				:	WORKS   VALGRIND PROOF
+		- test	headless_reindex			:	WORKS   VALGRIND PROOF
+		- test	headless_count				:	WORKS   VALGRIND PROOF
 */
 
 // --- prototype ---
@@ -241,6 +241,7 @@ int	main(int argc, char **argv)
 	printf("test 11: finally test headless_clear_list_simple():\n");
 	headless_clear_list_simple(&test0);
 	printf("called headless_clear_list(&test0):\n");
+	headless_clear_node_simple(&test3);
 	printf("test 11: test node 1 (test0):\n");
 	printf("ptr: %p\n\n", test0);
 

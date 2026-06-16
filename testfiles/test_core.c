@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_core.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/16 14:12:23 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/16 14:13:27 by lenivorb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 // --- icludes ---
 
 #include "../core/list_core.h"
@@ -6,7 +18,12 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+	TODO:
+		- test		init_empty_node()	:	WORKS		VALGRIND PROOF
+		- test		init_node()			:   WORKS       VALGRIND PROOF
+		- test		init_new_node()		:   WORKS       VALGRIND PROOF
+		- test		del_node()			:   WORKS       VALGRIND PROOF
+		- test		rm_node()			:   WORKS       VALGRIND PROOF
 */
 
 // --- prototype ---

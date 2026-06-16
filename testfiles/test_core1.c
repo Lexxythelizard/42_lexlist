@@ -6,7 +6,13 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+	    TODO:
+			- test      init_empty_head()   :   WORKS       VALGRIND PROOF
+			- test      init_head()         :   WORKS       VALGRIND PROOF
+			- test      init_new_head()     :   WORKS       VALGRIND PROOF
+			- test      del_head()          :   WORKS       VALGRIND PROOF
+			- test      rm_head()           :   WORKS       VALGRIND PROOF
+
 */
 
 // --- prototype ---
