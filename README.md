@@ -27,7 +27,7 @@ Include this library in your files
 later you should compile your files with 
 
 ```bash
-cc [your flags] [your files] -L [path to library] -l ft -o [your Program name]
+cc [your flags] [your files] -L [path to library] -l lexlist -o [your Program name]
 ```
 
 But not yet...
@@ -64,6 +64,7 @@ But not yet...
 AI assistance was used for:
 - not yet: but definitly for chasing typos, cause I#m so clumsy ;)
 
+
 ---
 
 ## Structs
@@ -94,43 +95,58 @@ typedef struct s_node
 **t_head**
 
 `t_head` is the head which keeps track of the lenght, stores the info about the list 
-and points to the first node of a list (member `.tail`)
-Also it got pointers to a struct called basicfunctions, which contains the basic functions to call (*under construction*) 
-`.specifunc` is meant to contain a pointer to a set of specified functions you want to use in your list
+and points to the first node of a list (member `.tail` / `head -> tail`)
+the member `.tip` / `head -> tip` allways pointing to the last element of tail
+--> the tip of tail :)
 
 ```C
 typedef struct s_head
 {
 	int			len;
 	void		*info;
-	s_basicfunc	*info;
-	s_del_func	*info;
-	void		*specifunc;
 	t_node		*tail;
+	t_node		*tip;
 }				t_node;
 
 ```
 
-**t_basicfunc**
 
-`t_basicfunc` is still under construction
-
----
 ---
 
 ## Functions - overview
 
 ### Part 1: headless functions
 
-- ...
-- ... follows ... 
-- ...
+- `headless_init_new_list`
+- `headless_add_back`
+- `headless_add_front`
+- `headless_last`
+- `headless_by_idx`
+- `headless_pop_by_index`
+- `headless_pop` 
+- `headless_clear_node`
+- `headless_clear_node_simple`
+- `headless_clear_list`
+- `headless_clear_list_simple`
+- `headless_cut`
+- `headless_reindex`
+- `headless_count`
 
 ### Part 2: lexlist functions
 
-- ...
-- ... follows ... 
-- ...
+- `lexlist__append`
+- `lexlist__get`
+- `lexlist__init`
+- `lexlist__insert`
+- `lexlist__pop_idx`
+- `lexlist__pop`
+- `lexlist__del`
+- `lexlist__rm`
+- `lexlist__strip`
+- `lexlist__del_simple`
+- `lexlist__rm_simple`
+- `lexlist__strop_simple`
+
 
 ---
 
@@ -171,6 +187,7 @@ Use the list without the head and without OoP just very basic :)
 
 ## Author
 Lexxythelizard 
+ 
 42 Berlin login: lenivorb 
 
 private Github:	https://www.github.com/Lexxythelizard
