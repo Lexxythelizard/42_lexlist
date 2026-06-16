@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 14:16:35 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:26:04 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:38:36 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_clear_node() iterates removes (frees and NULL sets) 
+the parsed node incl its content
+takes a pointer to pointer to node and a pointer to func del_content
+
+RETURNS:
+
+    int:    number of removed nodes / -1 if fails
+
 */
 
-// --- prototype ---
-
-int	headless_clear_node(t_node **node, void (*del_content)(void*));
-
 // --- define ---
-
-/*	...you comment... */
 
 int	headless_clear_node(t_node **node, void (*del_content)(void*))
 {

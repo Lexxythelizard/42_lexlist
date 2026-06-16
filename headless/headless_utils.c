@@ -6,30 +6,28 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 19:11:47 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/15 18:40:31 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:55:42 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../struct/lists.h"
 #include "../core/list_core.h"
 #include "../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_reindex() takes a pointer to (first) node and reassinging idx 
+in ascending order started with 0
+returns number of reindexed nodes
+
+headless_count() takes a pointer to any node and 
+counts the nodes from node to end
+return number of counted nodes
 */
 
-// --- prototype ---
-
-int	headless_reindex(t_node *first);
-int	headless_count(t_node *node);
-
 // --- define ---
-
-/*	...you comment... */
 
 int	headless_reindex(t_node *first)
 {

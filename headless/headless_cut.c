@@ -6,25 +6,28 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 10:59:41 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/09 17:30:31 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:44:59 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../struct/lists.h"
 #include "../core/list_core.h"
 #include "../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_cut()
+it takes a pointer to pointer to node and the idx of the node 
+which it should cut
+calls headless_by_idx(); sets headless_by_idx(node, idx - 1) -> next = NULL
+
+RETURNS:
+
+    t_node*:    pointer to cut of list
+
 */
-
-// --- prototype ---
-
-t_node	*headless_cut(t_node **node, int idx);
 
 // --- define ---
 

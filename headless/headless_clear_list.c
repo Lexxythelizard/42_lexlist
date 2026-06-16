@@ -6,29 +6,28 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 14:16:35 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/16 13:57:07 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:40:25 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../struct/lists.h"
 #include "../core/list_core.h"
 #include "../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_clear_list() iterates through the list 
+and removes (frees and NULL sets) any node incl its content
+takes a pointer to pointer of (fist) node and a pointer to func del_content
+
+RETURNS:
+
+	int:	number of removed nodes	/ -1 if fails
 */
 
-// --- prototype ---
-
-int	headless_clear_list(t_node **node, void (*del_content));
-
 // --- define ---
-
-/*	...you comment... */
 
 int	headless_clear_list(t_node **node, void (*del_content))
 {

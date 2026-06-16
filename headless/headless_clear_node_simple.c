@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 14:16:35 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/15 16:56:55 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:39:55 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_clear_node_simple() does the same headless_clear_node() does 
+it takes a pointer to pointer to node 
+and parsing it with &free to headless_clear_node()
+
+RETURNS:
+
+    int:    number of removed nodes / -1 if fails
+
 */
 
-// --- prototype ---
-
-int	headless_clear_node_simple(t_node **node);
-
 // --- define ---
-
-/*	...you comment... */
 
 int	headless_clear_node_simple(t_node **node)
 {

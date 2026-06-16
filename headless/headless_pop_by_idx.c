@@ -6,29 +6,29 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 10:59:41 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/09 19:11:16 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:50:44 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../struct/lists.h"
 #include "../core/list_core.h"
 #include "../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_pop_by_index() takes a pointer to pointer to node and idx
+pops the searched nod and 
+assigning popped nodes next to the next of previous node:
+previous -> next = popped -> next
+
+RETURN:
+
+	t_node*	:	pointer to popped node
 */
 
-// --- prototype ---
-
-t_node	*headless_pop_by_index(t_node **node, int idx);
-
 // --- define ---
-
-/*	...you comment... */
 
 t_node	*headless_pop_by_index(t_node **node, int idx)
 {

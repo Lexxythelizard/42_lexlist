@@ -6,20 +6,28 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 18:25:15 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:25:17 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:26:44 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../struct/lists.h"
 #include "../core/list_core.h"
 #include "../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_add_front() takes the node and make it the first node of the list
+takes a pointer to the pointer of the (old) first node
+appends the old first node:
+
+	new -> next = *node
+
+RETURN:
+
+    pointer to new
+
 */
 
 // --- prototype ---

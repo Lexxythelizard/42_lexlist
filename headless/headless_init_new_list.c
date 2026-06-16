@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 10:59:41 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/15 17:46:40 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:45:56 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,12 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+headless_init_new_list() takes a pointer to content and 
+returs a pointer to new begin of ne list
+only headless which is meant to takes a pointer to content
 */
 
-// --- prototype ---
-
-t_node	*headless_init_new_list(void *content);
-
 // --- define ---
-
-/*takes a pointer to content and returs a pointer to new begin of ne list
-only headless which is meant to takes a pointer to content*/
 
 t_node	*headless_init_new_list(void *content)
 {
