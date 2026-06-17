@@ -159,117 +159,113 @@ Use the list without the head and without OoP just very basic :)
 ##### will be updated soon
 
 **headless_init_new_list**
-- Params:	`void`		`content`
+- Param 1:	`void`		`content`
 - Return:	`t_node`	`*new_list`
-- NOTE:		the only headless function which 
-			takes a pointer to content to create (allocate) a new node. 
+- NOTE:		the only headless function which \
+			takes a pointer to content to create (allocate) a new node. \
 			use it to create a pointer to a new node
 
 **headless_add_back**
-- Params:	`t_node` 	`**node`
-			`t_node` 	`*new`
+- Param 1:	`t_node` 	`**node`
+- Param 2:	`t_node` 	`*new`
 - Return:	---
-- NOTE:		adds node to the end of the list,
+- NOTE:		adds node to the end of the list, \
 			makes *node new if *node was NULL (list was empty)
 
 **headless_add_front**
-- Params:	`t_node` 	`**node`
-			`t_node` 	`*new`
+- Param 1:	`t_node` 	`**node`
+- Param 2:	`t_node` 	`*new`
 - Return:	`t_node` 	`*new_first node`
-- NOTE:		makws new the new first node and append the list as new -> next
+- NOTE:		makws new the new first node and append the list as new -> next \
 			be carefull and make sure to parse the first node of the list
 
 **headless_by_idx**
-- Params:	`t_node`	`*node`
-			`int` 		`idx`
+- Param 1:	`t_node`	`*node`
+- Param 2:	`int` 		`idx`
 - Return:	`t_node` 	`*searched_node` / `NULL` if not found
-- NOTE:		returns a pointer to the node with idx 
+- NOTE:		returns a pointer to the node with idx \
 			node remains in list
 
 **headless_last**
-- Params:	`t_node`	`*node`
+- Param 1:	`t_node`	`*node`
 - Return:	`t_node` 	`*last_node` / `NULL` if list empty
 - NOTE:		simple and safe funtion, could be called on any node in the list
 
 **headless_pop_by_index**
-- Params:	`t_node`	`**node`
-			`int` 		`idx`
+- Param 1:	`t_node`	`**node`
+- Param 2:	`int` 		`idx`
 - Return:	`t_node` 	`*searched_node` / `NULL` if not found
-- NOTE:		returns a pointer to the node with idx 
-			node pops removed from list, list stays intakt ue to reconnection: 
+- NOTE:		returns a pointer to the node with idx \
+			node pops removed from list, list stays intakt ue to reconnection: \
 			popped | prev -> next = popped -> next;
 
 **headless_pop**
-- Params:	`t_node`	`**node`
-- Return:	`t_node` 	`*last_node` / `NULL` if list empty
-- NOTE:		simple and safe funtion, could be called on any node in the list, 
-			popps the last node of the list and removing it from the list
+- Param 1:	`t_node`	`**node`
+- Return:	`t_node` 	`*last_node` / `NULL` if list empty 
+- NOTE:		simple and safe funtion, could be called on any node in the list, \ 
+			popps the last node of the list and removing it from the list \
 			popped | prev -> next = NULL;
 
 **headless_clear_node**
-- Params:	`t_node`	`**node`
-- Params:	`void` 		`(*del_content)(void*)`
+- Param 1:	`t_node`	`**node`
+- Param 2:	`void` 		`(*del_content)(void*)`
 - Return:	`int` 		`idx of removed node`
-- NOTE:		calling `del_content` on `(*node)->content` to free and delete content
-			for easy freeable content, like str just use `headless_clear_node_simple`
-			be carefull: it baicaly deleting one node and its content
+- NOTE:		calling `del_content` on `(*node)->content` to free and delete content \
+			for easy freeable content, like str just use `headless_clear_node_simple` \
+			be carefull: it baicaly deleting one node and its content \
 			without reconnecting the list: could brake list
 
 **headless_clear_node_simple**
-- Params:	`t_node`	`**node`
+- Param 1:	`t_node`	`**node`
 - Return:	`int` 		`idx of removed node`
-- NOTE:		calling `del_content` on `(*node)->content` to free and delete 
-			easy freeable content, like str.
-			be carefull: it baicaly deleting one node and its content
+- NOTE:		calling `del_content` on `(*node)->content` to free and delete  \
+			easy freeable content, like str. \
+			be carefull: it baicaly deleting one node and its content \
 			without reconnecting the list: could brake list
 
 **headless_clear_list**
-- Params:	`t_node`	`**node`
-- Params:	`void` 		`(*del_content)(void*)`
+- Param 1:	`t_node`	`**node`
+- Param 2:	`void` 		`(*del_content)(void*)`
 - Return:	`int` 		`idx of removed node`
-- NOTE:		calling `clear_node` iterativly on any node until the end 
-			parsing `del_content` every time.
+- NOTE:		calling `clear_node` iterativly on any node until the end \
+			parsing `del_content` every time. \
 			use `headless_clear_list_simple` for easy freeable content like str.
 
 **headless_clear_list_simple**
-- Params:	`t_node`	`**node`
+- Param 1:	`t_node`	`**node`
 - Return:	`int` 		`idx of removed node`
-- NOTE:		calling `clear_node` iterativly on any node until the end 
-			parsing `del_content` every time.
+- NOTE:		calling `clear_node` iterativly on any node until the end \
+			parsing `del_content` every time. \
 			use it only for easy freeable content like str.
 
-**headless_**
-- Params:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**headless_cut**
+- Param 1:	`t_node`	`**node`
+- Param 2:	`int`		`idx`
+- Return:	`t_node`	`cut` first node pf cut of list \
+- NOTE:		cuts the list at idx incl and node add idx \
+			sets `(headless_get_by_idx(*node, (idx - 1)))-> next = NULL;` \
+			headless_cut([node 0], 3) | stays {node 0, node 1, node 2} | \
+			cut {node 3, node 4, ..., node n}
 
-**headless_**
-- Params:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**headless_reindex**
+- Param 1:	`t_node` 	`*first`
+- Return:	`int`		`reindexed` number of reindexed elements
+- NOTE:		reindexing every node in ascending order, make sure to call it add the head \
+			Use it after you popped one element or aafter you called `headles_add_front`
 
-**headless_**
-- Params:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**headless_count**
+- Param 1:	`t_node`	`*node`
+- Return:	`int`		`count`
+- NOTE:		could be used at any node to count the elements until the end \
+			make sure to parse the first node if you wanna kn ow the whole lenght
 
-**...**
 
 ### lexlistfunction:
 
 ##### will be updated soon
 
 **ft_func name**
-- Params:	`[type]` `[name]`
+- Param 1:	`[type]` `[name]`
 - Return:	`[type]` `[name]`
 - NOTE:		the original ...
 			be carefull; usefull to delete sensitiv data
