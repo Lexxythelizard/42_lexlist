@@ -16,6 +16,15 @@ Lists containing a head, keeping tracks of the lenght, storing the information a
 
 ## Instructions
 
+clone this repository and call
+
+```bash
+make all
+```
+
+to create the library in the root of the repository.
+the header to include `lexlist.h` is also in the root of this repository
+
 Include this library in your files
 
 ```C
@@ -26,6 +35,12 @@ later you should compile your files with
 
 ```bash
 cc [your flags] [your files] -L [path to library] -l lexlist -o [your Program name]
+```
+
+leftover `.o` files could be removed anytime by calling
+
+```bash
+make clean
 ```
 
 ## Resources

@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/10 19:30:37 by lenivorb          #+#    #+#              #
-#    Updated: 2026/06/15 17:11:00 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/06/18 18:06:25 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,10 @@ Src_Head	=	$(Method_Dir)/list_append.c \
 				$(Del_Dir)/del_strip.c \
 				$(Del_Dir)/del_strip_simple.c
 
+# ----> default command
+default: all
+# <---- default end
+
 Obj_Core 	=	$(Src_Core:.c=.o)
 
 Obj_Headl 	=	$(Src_Headl:.c=.o)
@@ -177,4 +181,5 @@ create_head: $(Obj_Head)
 
 # -------------------- PHONY --------------------
 
-.PHONY: all re fclean clean clean_core clean_headl clean_func create_core create_headl create_func
+.PHONY: default all re fclean clean clean_core clean_headl clean_head \
+		create_core create_headl create_func
