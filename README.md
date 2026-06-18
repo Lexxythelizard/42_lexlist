@@ -1,43 +1,42 @@
 README.md
 
-*This project has been created as little side project of the 42 curriculum by lenivorb aka Lexxythelizard.*
+*This project has been created as a little side project of the 42 curriculum by lenivorb aka Lexxythelizard.*
 
 # Lexlists
 
 ## Description
 
-`Lexlists` is a custom C library inspired by the liked list part of the very first project `libft`.
+`Lexlists` is a small personal C library created during my journey through the 42 curriculum. \
 
-Since I got inspired by Python lists, I wanted to embrace a little more structure knowlegde and 
-create my own library
-
-Lists containing a head, keeping tracks of the lenght, storing the information about the list and pointing to the first element of list (`.tail`)
-
+It explores linked lists in C from two perspectives: simple headless node-based lists and \
+structured list heads that keep track of metadata such as length, \
+list information, first node and last node. The project is mainly a learning tool, \
+but also a reusable foundation for future C projects like `42_lexscan`.
 
 ## Instructions
 
-clone this repository and call
+Clone this repository and call
 
 ```bash
 make all
 ```
 
 to create the library in the root of the repository.
-the header to include `lexlist.h` is also in the root of this repository
+The header to include `lexlist.h` is also in the root of this repository
 
-Include this library in your files
+Include this library in your files:
 
 ```C
 #include "[path to dir]/lexlist.h"
 ```
 
-later you should compile your files with 
+Compile your files with:
 
 ```bash
-cc [your flags] [your files] -L [path to library] -l lexlist -o [your Program name]
+cc [your flags] [your files] -L [path to library] -l lexlist -o [your program name]
 ```
 
-leftover `.o` files could be removed anytime by calling
+Leftover `.o` files can be removed anytime by calling
 
 ```bash
 make clean
@@ -49,13 +48,13 @@ make clean
 
 ### Documentation
 
-**common webpages**
-- Geeks for Geeks : https://www.geeksforgeeks.org/c/c-programming-language/
-- stackoverflow : https://stackoverflow.com/questions
+**Common webpages**
+- GeeksforGeeks : https://www.geeksforgeeks.org/c/c-programming-language/
+- Stack Overflow : https://stackoverflow.com/questions
 
 ### Tools
 
-- cc for compilation
+- cc for compiling
 - make for build automation
 - ar for creating the static library
 - valgrind for memory checking
@@ -64,7 +63,7 @@ make clean
 ### AI usage
 
 AI assistance was used for:
-- chasing typos, cause I am so clumsy ;)
+- chasing typos, because I am so clumsy ;)
 
 
 ---
@@ -80,8 +79,9 @@ AI assistance was used for:
 
 **t_node**
 
-`t_node` is basically a simple linked list node which can point to any content type 
-and to the next node, additional it could be indexed
+`t_node` is basically a simple linked list node which can point to any content type  \
+and to the next node, additionally, it can be indexed. \
+This enables a few more possibillites: See `headless functions`
 
 ```C
 typedef struct s_node
@@ -95,9 +95,9 @@ typedef struct s_node
 
 **t_head**
 
-`t_head` is the head which keeps track of the lenght, stores the info about the list 
+`t_head` is the head which keeps track of the length, stores the info about the list 
 and points to the first node of a list (member `.tail` / `head -> tail`)
-the member `.tip` / `head -> tip` allways pointing to the last element of tail
+the member `.tip` / `head -> tip` always points to the last element of tail
 --> the tip of tail :)
 
 ```C
@@ -107,7 +107,7 @@ typedef struct s_head
 	void		*info;
 	t_node		*tail;
 	t_node		*tip;
-}				t_node;
+}				t_head;
 
 ```
 
@@ -151,17 +151,17 @@ typedef struct s_head
 
 ---
 
-## Funcions in detail
+## Functions in detail
 
 ### headless functions:
 
-Use the list without the head and without OoP just very basic :)
+Use the list without the head and without OOP just very basic :)
 
 **headless_init_new_list**
 - Param 1:	`void`		`content`
 - Return:	`t_node`	`*new_list`
 - NOTE:		the only headless function which \
-			takes a pointer to content to create (allocate) a new node. \
+			takes a pointer to content and create (allocates) a new node. \
 			use it to create a pointer to a new node
 
 **headless_add_back**
@@ -175,8 +175,8 @@ Use the list without the head and without OoP just very basic :)
 - Param 1:	`t_node` 	`**node`
 - Param 2:	`t_node` 	`*new`
 - Return:	`t_node` 	`*new_first node`
-- NOTE:		makws new the new first node and append the list as new -> next \
-			be carefull and make sure to parse the first node of the list
+- NOTE:		makes new the new first node and appends the list as new -> next \
+			be careful and make sure to pass the first node of the list
 
 **headless_by_idx**
 - Param 1:	`t_node`	`*node`
@@ -188,21 +188,21 @@ Use the list without the head and without OoP just very basic :)
 **headless_last**
 - Param 1:	`t_node`	`*node`
 - Return:	`t_node` 	`*last_node` / `NULL` if list empty
-- NOTE:		simple and safe funtion, could be called on any node in the list
+- NOTE:		simple and safe function, could be called on any node in the list
 
 **headless_pop_by_index**
 - Param 1:	`t_node`	`**node`
 - Param 2:	`int` 		`idx`
 - Return:	`t_node` 	`*searched_node` / `NULL` if not found
 - NOTE:		returns a pointer to the node with idx \
-			node pops removed from list, list stays intakt ue to reconnection: \
+			node gets removed from the list, list stays intact due to reconnection: \
 			popped | prev -> next = popped -> next;
 
 **headless_pop**
 - Param 1:	`t_node`	`**node`
 - Return:	`t_node` 	`*last_node` / `NULL` if list empty 
-- NOTE:		simple and safe funtion, could be called on any node in the list, \ 
-			popps the last node of the list and removing it from the list \
+- NOTE:		simple and safe function, could be called on any node in the list, \
+			pops the last node of the list and removes it from the list \
 			popped | prev -> next = NULL;
 
 **headless_clear_node**
@@ -210,38 +210,38 @@ Use the list without the head and without OoP just very basic :)
 - Param 2:	`void` 		`(*del_content)(void*)`
 - Return:	`int` 		`idx of removed node`
 - NOTE:		calling `del_content` on `(*node)->content` to free and delete content \
-			for easy freeable content, like str just use `headless_clear_node_simple` \
-			be carefull: it baicaly deleting one node and its content \
-			without reconnecting the list: could brake list
+			for easily freeable content, like str just use `headless_clear_node_simple` \
+			be careful: it basically deleting one node and its content \
+			without reconnecting the list: could breake the list
 
 **headless_clear_node_simple**
 - Param 1:	`t_node`	`**node`
 - Return:	`int` 		`idx of removed node`
 - NOTE:		calling `del_content` on `(*node)->content` to free and delete  \
-			easy freeable content, like str. \
-			be carefull: it baicaly deleting one node and its content \
-			without reconnecting the list: could brake list
+			easily freeable content, like str. \
+			be careful: it basically deleting one node and its content \
+			without reconnecting the list: could breake the list
 
 **headless_clear_list**
 - Param 1:	`t_node`	`**node`
 - Param 2:	`void` 		`(*del_content)(void*)`
 - Return:	`int` 		`idx of removed node`
-- NOTE:		calling `clear_node` iterativly on any node until the end \
-			parsing `del_content` every time. \
-			use `headless_clear_list_simple` for easy freeable content like str.
+- NOTE:		calling `clear_node` iteratively on any node until the end \
+			passing `del_content` every time. \
+			use `headless_clear_list_simple` for easily freeable content like str.
 
 **headless_clear_list_simple**
 - Param 1:	`t_node`	`**node`
 - Return:	`int` 		`idx of removed node`
-- NOTE:		calling `clear_node` iterativly on any node until the end \
-			parsing `del_content` every time. \
-			use it only for easy freeable content like str.
+- NOTE:		calling `clear_node` iteratively on any node until the end \
+			passing `del_content` every time. \
+			use it only for easily freeable content like str.
 
 **headless_cut**
 - Param 1:	`t_node`	`**node`
 - Param 2:	`int`		`idx`
-- Return:	`t_node`	`cut` first node pf cut of list \
-- NOTE:		cuts the list at idx incl and node add idx \
+- Return:	`t_node`	`cut` first node of cut-off list \
+- NOTE:		cuts the list at idx inclusive \
 			sets `(headless_get_by_idx(*node, (idx - 1)))-> next = NULL;` \
 			`headless_cut([node 0], 3)` | stays {node 0, node 1, node 2} | \
 			cut {node 3, node 4, ..., node n}
@@ -249,17 +249,18 @@ Use the list without the head and without OoP just very basic :)
 **headless_reindex**
 - Param 1:	`t_node` 	`*first`
 - Return:	`int`		`reindexed` number of reindexed elements
-- NOTE:		reindexing every node in ascending order, make sure to call it add the head \
-			Use it after you popped one element or aafter you called `headles_add_front`
+- NOTE:		reindexing every node in ascending order, \
+			make sure to call it at the head \
+			Use it after you popped one element or after you called `headless_add_front`
 
 **headless_count**
 - Param 1:	`t_node`	`*node`
 - Return:	`int`		`count`
 - NOTE:		could be used at any node to count the elements until the end \
-			make sure to parse the first node if you wanna kn ow the whole lenght
+			make sure to pass the first node if you want to know the whole length
 
 
-### lexlistfunction:
+### lexlist functions:
 
 **lexlist__append**
 - Param 1:	`t_head`	`*self`
@@ -267,7 +268,7 @@ Use the list without the head and without OoP just very basic :)
 - Return:	`int`		`idx` index of appended element
 - NOTE:		the original ...
 			appends a new element (node) at the end of the list (tail) \
-			assigns idx to new element and updates `head -> tip` automaticly \
+			assigns idx to new element and updates `head -> tip` automatically \
 			`new_element = {idx: old len, content: <content> next: NULL}` \
 			allocates memory for `new_element`
 
@@ -290,23 +291,23 @@ Use the list without the head and without OoP just very basic :)
 - Param 2:	`void`		`*content`
 - Param 3:	`int`		`idx`
 - Return:	`int`		`self -> len` the new len
-- NOTE:		inserts a new element in list at idx if 0 <= idx <= self -> len \
-			reindex the `self -> tail` and updates `self -> tip` automaticly \
+- NOTE:		inserts a new element into the list at idx if 0 <= idx <= self -> len \
+			reindexes the `self -> tail` and updates `self -> tip` automatically \
 			allocates memory for `new_element`
 
 **lexlist__pop_idx**
 - Param 1:	`t_head`	`*self`
 - Param 2:	`int`		`idx`
 - Return:	`void`		`*content` of last element `idx: idx` in list
-- NOTE:		element will be removed from list \
-			automaticly updates head -> len and head -> tip
+- NOTE:		element will be removed from the list \
+			automatically updates head -> len and head -> tip
 
 **lexlist__pop**
 - Param 1:	`t_head`	`*self`
 - Return:	`void`		`*content` of last element in list
-- NOTE:		element will be removed from list without breaking the list\
-			automaticly updates head -> len and head -> tip \
-			automaticly reindexes the elements
+- NOTE:		the element will be removed from the list without breaking the list \
+			automatically updates head -> len and head -> tip \
+			automatically reindexes the elements
 
 **lexlist__del**
 - Param 1:	`t_head`	`*self`
@@ -314,10 +315,10 @@ Use the list without the head and without OoP just very basic :)
 - Param 3:	`void`		`(*rm_content)(void*)`
 - Return:	`int`		`len` of elements removed
 - NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
-			be carefull, this function does not free head itself, \
-			use if head was not allocated or for other occassions \
-			MAKE SURE to parse a working `rm_info` and a valid `rm_content` function \
-			use `lexlist__del_simple` for easy freable content and info variables
+			be careful, this function does not free head itself, \
+			use if head was not allocated or for other occasions \
+			MAKE SURE to pass a working `rm_info` and a valid `rm_content` function \
+			use `lexlist__del_simple` for easily freeable content and info variables
 
 **lexlist__rm**
 - Param 1:	`t_head`	`**self`
@@ -326,26 +327,26 @@ Use the list without the head and without OoP just very basic :)
 - Return:	`int`		`len` of elements removed
 - NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
 			by calling `lexlist__del` \
-			finally it frees head and set `head = NULL` \
-			MAKE SURE to parse a working `rm_info` and a valid `rm_content` function \
-			use `lexlist__rm_simple` for easy freable content and info variables
+			finally, it frees the head and sets `head = NULL` \
+			MAKE SURE to pass a working `rm_info` and a valid `rm_content` function \
+			use `lexlist__rm_simple` for easily freeable content and info variables
 
 **lexlist__strip**
 - Param 1:	`t_head`	`**self`
 - Param 2:	`void`		`(*rm_info)(void*)`
 - Return:	`void`		`**stripped` NULL terminated void pointer array of contents
-- NOTE:		strips all element of `(*head)->tail` means: iteratyvely removes all of its \
+- NOTE:		strips all elements of `(*head)->tail` means: iteratively removes all of its \
 			elements but storing its content in `NULL` terminated `void**` array \
-			which can be freed seperatly \
-			MAKE SURE to parse a working `rm_info` function \
-			use `lexlist__strip_simple()` for easy freable info variables
+			which can be freed separately \
+			MAKE SURE to pass a working `rm_info` function \
+			use `lexlist__strip_simple()` for easily freeable info variables
 
 **lexlist__del_simple**
 - Param 1:	`t_head`	`*self`
 - Return:	`int`		`len` of elements removed
 - NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
-			be carefull, this function does not free head itself, \
-			use if head was not allocated or for other occassions \
+			be careful, this function does not free head itself, \
+			use if head was not allocated or for other occasions \
 			MAKE SURE just to use it for easily freeable content and info variables
 
 **lexlist__rm_simple**
@@ -353,15 +354,15 @@ Use the list without the head and without OoP just very basic :)
 - Return:	`int`		`len` of elements removed
 - NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
 			by calling `lexlist__del` \
-			finally it frees head and set `head = NULL` \
+			finally, it frees the head and sets `head = NULL` \
 			MAKE SURE just to use it for easily freeable content and info variables
 
 **lexlist__strip_simple**
 - Param 1:	`t_head`	`**self`
 - Return:	`void`		`**stripped` NULL terminated void pointer array of contents
-- NOTE:		strips all element of `(*head)->tail` means: iteratyvely removes all of its \
+- NOTE:		strips all elements of `(*head)->tail` means: iteratively removes all of its \
 			elements but storing its content in `NULL` terminated `void**` array \
-			which can be freed seperatly \
+			which can be freed separately \
 			MAKE SURE just to use it for easily freeable info variables
 
 
@@ -373,5 +374,5 @@ Lexxythelizard
  
 42 Berlin login: lenivorb 
 
-private Github:	https://www.github.com/Lexxythelizard
+private GitHub:	https://www.github.com/Lexxythelizard
 
