@@ -33,7 +33,7 @@ t_node	*headless_by_idx(t_node *node, int idx)
 {
 	if ((!node) || (idx < 0))
 		return (NULL);
-	while (node -> next)
+	while (node)
 	{
 		if (node -> idx == idx)
 			return (node);
