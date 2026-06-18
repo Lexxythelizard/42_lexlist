@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:39:22 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:22:42 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/18 12:45:32 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	lexlist__insert(t_head *self, void *content, int idx)
 		ptr_pre -> next = new;
 	}
 	self -> len = headless_reindex(self -> tail);
-	self -> tip = headless_by_idx(self -> len -1);
+	if (self -> tip -> next)
+		self -> tip = self -> tip -> next;
 	return (self -> len);
 }

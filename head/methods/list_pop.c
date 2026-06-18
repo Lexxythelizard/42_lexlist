@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_last.c                                        :+:      :+:    :+:   */
+/*   list_pop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 16:41:30 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 17:10:47 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/18 13:45:24 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	*lexlist__pop(t_head *self)
 		return (NULL);
 	if ((!(self -> tail)) || (!(self -> tip)))
 		return (NULL);
-	ptr = self -> tail;
 	content = self -> tip -> content;
 	self -> len--;
 	if (self -> tail == self -> tip)
@@ -47,8 +46,7 @@ void	*lexlist__pop(t_head *self)
 		self -> tip = NULL;
 		return (content);
 	}
-	while (ptr -> next != self -> tail)
-		ptr = ptr -> next;
+	ptr = headless_by_idx(self -> tail, (self -> len - 1));
 	ptr -> next = NULL;
 	free (self -> tip);
 	self -> tip = ptr;

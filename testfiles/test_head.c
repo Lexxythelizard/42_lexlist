@@ -12,7 +12,7 @@
 			- test		lexlist__get()				:	WORKS	VALGRIND PROOF
 			- test		lexlist__init()				:	WORKS	VALGRIND PROOF
 			- test		lexlist__insert()			:	WORKS	VALGRIND PROOF
-			- test		lexlist__pop_idx()			:	
+			- test		lexlist__pop_idx()			:	WORKS	VALGRIND PROOF
 			- test		lexlist__pop_()				:	
 			- test		lexlist__del()				:	
 			- test		lexlist__rm()				:	
@@ -36,7 +36,7 @@ void	lxy_print_node(t_node *node);
 int	main(int argc, char **argv)
 {
 	t_head	*head0;
-	//t_head	*head1;
+	t_head	*head1;
 	void	*temp0;
 	char	*inp0;
 	char	*inp1;
@@ -95,16 +95,48 @@ int	main(int argc, char **argv)
 	printf("lexlist__insert(head, \"%s\", 1):\n", (char*)(inp3));
 	lxy_print_head(head0);
 	lxy_print_tail(head0);
+	printf("check tip: head0 -> tip:\n");
+	lxy_print_node(head0 -> tip);
+
+	printf("------------------------------------------------------\n");
+	printf("test 4: lexlist__pop_idx():\n");
+	printf("lexlist__pop_idx(head0, 1);\n");
+	temp0 = lexlist__pop_idx(head0, 1);
+	printf("popped content: %s\n\n", (char*)(temp0));
+	printf("check tip: head0 and tail:\n");
+	lxy_print_head(head0);
+	lxy_print_tail(head0);
+	printf("check tip: head0 -> tip:\n");
+	lxy_print_node(head0 -> tip);
+	head1 = lexlist__init(temp0);
+	printf("popped content assigned as info of head1");
+	lxy_print_head(head1);
+
+	printf("------------------------------------------------------\n");
+	printf("test 5: lexlist__pop():\n");
+	printf("temp0 = lexlist__pop(head0);\n");
+	temp0 = lexlist__pop(head0);
+	printf("lexlist__append(head1, \"%s\");\n", (char*)(temp0));
+	lexlist__append(head1, temp0);
+	printf("temp0 = lexlist__pop(head0);\n");
+	temp0 = lexlist__pop(head0);
+	printf("lexlist__append(head1, \"%s\");\n", (char*)(temp0));
+	lexlist__append(head1, temp0);
 
 	printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 	free(inp0);
 	free(inp1);
 	free(inp2);
 	free(inp3);
-	free(head0 -> tail -> next -> next);
+	//free(head0 -> tail -> next -> next);
+	/*
 	free(head0 -> tail -> next);
 	free(head0 -> tail);
+	*/
+	free(head1 -> tail -> next);
+	free(head1 -> tail);
 	free(head0);
+	free(head1);
 	return (0);
 }
 
