@@ -18,12 +18,10 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+lexlist__init() takes a void pointer to info, allocates and 
+inits a new head {len: 0, info: <info> tail: NULL, tip: NULL}
+returns pointer to new head
 */
-
-// --- prototype ---
-
-t_head	*lexlist__init(void *info);
 
 // --- define ---
 

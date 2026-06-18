@@ -12,19 +12,16 @@
 
 // --- icludes ---
 
-#include "../../struct/lists.h"
 #include "../../core/list_core.h"
 #include "../../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+lexlist__insert() takes a pointer to head, a pointer to content and idx
+inserts a new element in list at idx if 0 <= idx <= self -> len
+reindex the head_tail and updates tip automaticly
 */
-
-// --- prototype ---
-
-int	lexlist__insert(t_head *self, void *content, int idx);
 
 // --- define ---
 
@@ -50,5 +47,6 @@ int	lexlist__insert(t_head *self, void *content, int idx)
 		ptr_pre -> next = new;
 	}
 	self -> len = headless_reindex(self -> tail);
+	self -> tip = headless_by_idx(self -> len -1);
 	return (self -> len);
 }

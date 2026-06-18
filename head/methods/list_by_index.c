@@ -12,23 +12,18 @@
 
 // --- icludes ---
 
-#include "../../struct/lists.h"
 #include "../../core/list_core.h"
 #include "../../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+lexlist__get() takes pointer to head and idx
+returns pointer to content of element with idx: idx if found else NULL
+list remains unchanged
 */
 
-// --- prototype ---
-
-void	*lexlist__get(t_head *self, int idx);
-
 // --- define ---
-
-/* ...comment...*/
 
 void	*lexlist__get(t_head *self, int idx)
 {

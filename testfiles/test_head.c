@@ -8,10 +8,10 @@
 
 /*
 	    TODO:
-			- test		lexlist__append()			:	1/2 tests done
-			- test		lexlist__get()				:	
+			- test		lexlist__append()			:	WORKS	VALGRIND PROOF
+			- test		lexlist__get()				:	WORKS	VALGRIND PROOF
 			- test		lexlist__init()				:	WORKS	VALGRIND PROOF
-			- test		lexlist__insert()			:	
+			- test		lexlist__insert()			:	WORKS	VALGRIND PROOF
 			- test		lexlist__pop_idx()			:	
 			- test		lexlist__pop_()				:	
 			- test		lexlist__del()				:	
@@ -37,23 +37,28 @@ int	main(int argc, char **argv)
 {
 	t_head	*head0;
 	//t_head	*head1;
+	void	*temp0;
 	char	*inp0;
 	char	*inp1;
 	char	*inp2;
+	char	*inp3;
 
-	if (argc < 4)
+	if (argc < 5)
 		return (0);
 	inp0 = lxy_strdup(argv[1]);
 	inp1 = lxy_strdup(argv[2]);
 	inp2 = lxy_strdup(argv[3]);
-	if ((!inp0) || (!inp1) || (!inp2))
+	inp3 = lxy_strdup(argv[4]);
+	if ((!inp0) || (!inp1) || (!inp2) || (!inp3))
 	{
 		if (inp0)
 			free(inp0);
 		if (inp1)
 			free(inp1);
 		if (inp2)
-			free(inp1);
+			free(inp2);
+		if (inp3)
+			free(inp3);
 		return (1);
 	}
 	printf("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
@@ -66,11 +71,38 @@ int	main(int argc, char **argv)
 	printf("idx added: %d\n\n", lexlist__append(head0, inp1));
 	lxy_print_head(head0);
 	lxy_print_node(head0 -> tail);
+	printf("idx added: %d\n\n", lexlist__append(head0, inp2));
+	lxy_print_head(head0);
+	lxy_print_tail(head0);
+
+	printf("------------------------------------------------------\n");
+	printf("test 2: lexlist__get():\n");
+	temp0 = lexlist__get(head0, 1);
+	printf("lexlist__get(head0, 1); --> %s\n", (char*)(temp0));
+	temp0 = lexlist__get(head0, 0);
+	printf("lexlist__get(head0, 0); --> %s\n", (char*)(temp0));
+	temp0 = lexlist__get(head0, 1);
+	printf("lexlist__get(head0, 1); --> %s\n", (char*)(temp0));
+	temp0 = lexlist__get(head0, 4);
+	printf("lexlist__get(head0, 4); --> %s\n", (char*)(temp0));
+	printf("\ntest 2: list remains unchanged:\n");
+	lxy_print_head(head0);
+	lxy_print_tail(head0);
+
+	printf("------------------------------------------------------\n");
+	printf("test 3: lexlist__insert():\n");
+	lexlist__insert(head0, inp3, 1);
+	printf("lexlist__insert(head, \"%s\", 1):\n", (char*)(inp3));
+	lxy_print_head(head0);
+	lxy_print_tail(head0);
 
 	printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 	free(inp0);
 	free(inp1);
 	free(inp2);
+	free(inp3);
+	free(head0 -> tail -> next -> next);
+	free(head0 -> tail -> next);
 	free(head0 -> tail);
 	free(head0);
 	return (0);

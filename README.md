@@ -244,7 +244,7 @@ Use the list without the head and without OoP just very basic :)
 - Return:	`t_node`	`cut` first node pf cut of list \
 - NOTE:		cuts the list at idx incl and node add idx \
 			sets `(headless_get_by_idx(*node, (idx - 1)))-> next = NULL;` \
-			headless_cut([node 0], 3) | stays {node 0, node 1, node 2} | \
+			`headless_cut([node 0], 3)` | stays {node 0, node 1, node 2} | \
 			cut {node 3, node 4, ..., node n}
 
 **headless_reindex**
@@ -264,7 +264,64 @@ Use the list without the head and without OoP just very basic :)
 
 ##### will be updated soon
 
-**ft_func name**
+**lexlist__append**
+- Param 1:	`t_head`	`*self`
+- Param 2:	`void`		`*content`
+- Return:	`int`		`idx` index of appended element
+- NOTE:		the original ...
+			appends a new element (node) at the end of the list (tail) \
+			assigns idx to new element and updates `head -> tip` automaticly \
+			`new_element = {idx: old len, content: <content> next: NULL}` \
+			allocates memory for `new_element`
+
+**lexlist__get**
+- Param 1:	`t_head`	`*self`
+- Param 2:	`int`		`idx`
+- Return:	`void`		`*content` / `NULL` if element not found
+- NOTE:		returns pointer to content of element \
+			list remains unchanged
+
+**lexlist__init**
+- Param 1:	`void`		`*info`
+- Return:	`t_head`	`*new_head` pointer to new head
+- NOTE:		inits a new head and assigning info \
+			`new_head = {len: 0, info: <info> tail: NULL, tip: NULL}` \
+			allocates memory for `new_head`
+
+**lexlist__insert**
+- Param 1:	`t_head`	`*self`
+- Param 2:	`void`		`*content`
+- Param 3:	`int`		`idx`
+- Return:	`int`		`self -> len` the new len
+- NOTE:		inserts a new element in list at idx if 0 <= idx <= self -> len \
+			reindex the `self -> tail` and updates `self -> tip` automaticly \
+			allocates memory for `new_element`
+
+**lexlist__**
+- Param 1:	`[type]` `[name]`
+- Return:	`[type]` `[name]`
+- NOTE:		the original ...
+			be carefull; usefull to delete sensitiv data
+			(no) NULL guard - ...
+			...
+
+**lexlist__**
+- Param 1:	`[type]` `[name]`
+- Return:	`[type]` `[name]`
+- NOTE:		the original ...
+			be carefull; usefull to delete sensitiv data
+			(no) NULL guard - ...
+			...
+
+**lexlist__**
+- Param 1:	`[type]` `[name]`
+- Return:	`[type]` `[name]`
+- NOTE:		the original ...
+			be carefull; usefull to delete sensitiv data
+			(no) NULL guard - ...
+			...
+
+**lexlist__**
 - Param 1:	`[type]` `[name]`
 - Return:	`[type]` `[name]`
 - NOTE:		the original ...

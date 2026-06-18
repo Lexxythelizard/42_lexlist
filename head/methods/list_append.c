@@ -12,19 +12,16 @@
 
 // --- icludes ---
 
-#include "../../struct/lists.h"
 #include "../../core/list_core.h"
 #include "../../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+lexlist__append() takes a pointer to head and a void pointerr to content
+appends a new element (node) at the end of the list (tail),
+assigns idx to new element and updates tip automaticly
 */
-
-// --- prototype ---
-
-int	lexlist__append(t_head *self, void *content);
 
 // --- define ---
 
