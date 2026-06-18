@@ -8,12 +8,10 @@ README.md
 
 `Lexlists` is a custom C library inspired by the liked list part of the very first project `libft`.
 
-Since I got inspired by Python lists, I wanted to embrace a little OoP and 
+Since I got inspired by Python lists, I wanted to embrace a little more structure knowlegde and 
 create my own library
 
 Lists containing a head, keeping tracks of the lenght, storing the information about the list and pointing to the first element of list (`.tail`)
-
- --> **...under construction...**
 
 
 ## Instructions
@@ -30,22 +28,11 @@ later you should compile your files with
 cc [your flags] [your files] -L [path to library] -l lexlist -o [your Program name]
 ```
 
-But not yet...
-
-	**...under construction...**
-
 ## Resources
 
 *The following resources were useful while working on this project:*
 
 ### Documentation
-
-**man pages**
-- ...
-- ...
-
-**makefile**
-- GNU make: 
 
 **common webpages**
 - Geeks for Geeks : https://www.geeksforgeeks.org/c/c-programming-language/
@@ -57,12 +44,12 @@ But not yet...
 - make for build automation
 - ar for creating the static library
 - valgrind for memory checking
-- custom test files for comparing original and ft_ behavior
+- custom test files for checking functions in the terminal
 
 ### AI usage
 
 AI assistance was used for:
-- not yet: but definitly for chasing typos, cause I#m so clumsy ;)
+- chasing typos, cause I am so clumsy ;)
 
 
 ---
@@ -73,7 +60,6 @@ AI assistance was used for:
 
 - `t_node`
 - `t_head`
-- `t_basicfunc`
 
 ### define
 
@@ -145,7 +131,7 @@ typedef struct s_head
 - `lexlist__strip`
 - `lexlist__del_simple`
 - `lexlist__rm_simple`
-- `lexlist__strop_simple`
+- `lexlist__strip_simple`
 
 
 ---
@@ -155,8 +141,6 @@ typedef struct s_head
 ### headless functions:
 
 Use the list without the head and without OoP just very basic :)
-
-##### will be updated soon
 
 **headless_init_new_list**
 - Param 1:	`void`		`content`
@@ -262,8 +246,6 @@ Use the list without the head and without OoP just very basic :)
 
 ### lexlistfunction:
 
-##### will be updated soon
-
 **lexlist__append**
 - Param 1:	`t_head`	`*self`
 - Param 2:	`void`		`*content`
@@ -297,44 +279,81 @@ Use the list without the head and without OoP just very basic :)
 			reindex the `self -> tail` and updates `self -> tip` automaticly \
 			allocates memory for `new_element`
 
-**lexlist__**
-- Param 1:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**lexlist__pop_idx**
+- Param 1:	`t_head`	`*self`
+- Param 2:	`int`		`idx`
+- Return:	`void`		`*content` of last element `idx: idx` in list
+- NOTE:		element will be removed from list \
+			automaticly updates head -> len and head -> tip
 
-**lexlist__**
-- Param 1:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**lexlist__pop**
+- Param 1:	`t_head`	`*self`
+- Return:	`void`		`*content` of last element in list
+- NOTE:		element will be removed from list without breaking the list\
+			automaticly updates head -> len and head -> tip \
+			automaticly reindexes the elements
 
-**lexlist__**
-- Param 1:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**lexlist__del**
+- Param 1:	`t_head`	`*self`
+- Param 2:	`void`		`(*rm_info)(void*)`
+- Param 3:	`void`		`(*rm_content)(void*)`
+- Return:	`int`		`len` of elements removed
+- NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
+			be carefull, this function does not free head itself, \
+			use if head was not allocated or for other occassions \
+			MAKE SURE to parse a working `rm_info` and a valid `rm_content` function \
+			use `lexlist__del_simple` for easy freable content and info variables
 
-**lexlist__**
-- Param 1:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
+**lexlist__rm**
+- Param 1:	`t_head`	`**self`
+- Param 2:	`void`		`(*rm_info)(void*)`
+- Param 3:	`void`		`(*rm_content)(void*)`
+- Return:	`int`		`len` of elements removed
+- NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
+			by calling `lexlist__del` \
+			finally it frees head and set `head = NULL` \
+			MAKE SURE to parse a working `rm_info` and a valid `rm_content` function \
+			use `lexlist__rm_simple` for easy freable content and info variables
 
-**...**
+**lexlist__strip**
+- Param 1:	`t_head`	`**self`
+- Param 2:	`void`		`(*rm_info)(void*)`
+- Return:	`void`		`**stripped` NULL terminated void pointer array of contents
+- NOTE:		strips all element of `(*head)->tail` means: iteratyvely removes all of its \
+			elements but storing its content in `NULL` terminated `void**` array \
+			which can be freed seperatly \
+			MAKE SURE to parse a working `rm_info` function \
+			use `lexlist__strip_simple()` for easy freable info variables
+
+**lexlist__del_simple**
+- Param 1:	`t_head`	`*self`
+- Return:	`int`		`len` of elements removed
+- NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
+			be carefull, this function does not free head itself, \
+			use if head was not allocated or for other occassions \
+			MAKE SURE just to use it for easily freeable content and info variables
+
+**lexlist__rm_simple**
+- Param 1:	`t_head`	`**self`
+- Return:	`int`		`len` of elements removed
+- NOTE:		removes all elements `head -> tail` completely, removes `head -> info` \
+			by calling `lexlist__del` \
+			finally it frees head and set `head = NULL` \
+			MAKE SURE just to use it for easily freeable content and info variables
+
+**lexlist__strip_simple**
+- Param 1:	`t_head`	`**self`
+- Return:	`void`		`**stripped` NULL terminated void pointer array of contents
+- NOTE:		strips all element of `(*head)->tail` means: iteratyvely removes all of its \
+			elements but storing its content in `NULL` terminated `void**` array \
+			which can be freed seperatly \
+			MAKE SURE just to use it for easily freeable info variables
 
 
 ---
 
 ## Author
+
 Lexxythelizard 
  
 42 Berlin login: lenivorb 

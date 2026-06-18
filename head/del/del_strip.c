@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_rm.c                                           :+:      :+:    :+:   */
+/*   del_strip.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:33:34 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 16:44:53 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/18 17:29:48 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../../struct/lists.h"
 #include "../../core/list_core.h"
 #include "../../lexlist.h"
 
 // --- DOC ---
 
 /*
+strip_tail() takes a pointer to pointer to head and a function pointer to
+rm_info is mean to delete (frees the head -> info)
+iteratyvely removes all elements of head -> tail, 
+but stores it contents in NULL terminated void** array
+returns void **content
+
+use lexlist__strip_simple() for easy freable info variables
+
 */
 
 // --- prototype ---
@@ -41,8 +48,6 @@ void	**lexlist__strip(t_head **self, void (*rm_info)(void*))
 	return (strip);
 }
 
-/*	...comment...*/
-
 static void	**strip_tail(t_head *head)
 {
 	t_node	*ptr;
@@ -54,7 +59,7 @@ static void	**strip_tail(t_head *head)
 	if (!(head -> tail))
 		return (NULL);
 	i = 0;
-	strip = malloc((head -> len) * 8);
+	strip = malloc((head -> len + 1) * 8);
 	if (!strip)
 		return (NULL);
 	ptr = head -> tail;
@@ -66,6 +71,7 @@ static void	**strip_tail(t_head *head)
 		head -> tail = ptr;
 		i++;
 	}
+	strip[i] = NULL;
 	head -> tip = NULL;
 	head -> len = 0;
 	return (strip);

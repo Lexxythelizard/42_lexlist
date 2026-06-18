@@ -6,25 +6,24 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 16:41:30 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/10 18:23:21 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/18 17:01:43 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../../struct/lists.h"
 #include "../../core/list_core.h"
 #include "../../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+lexlist__pop_idx() takes a pointer to head and 
+returns the content of the last element with idx: idx in list
+element will be removed from list, without breaking the list
+(works like headless_pop_idx, but just returns content and frees the node)
+automaticly updates head -> len and head -> tip and reindexes all elements
 */
-
-// --- prototype ---
-
-void	*lexlist__pop_idx(t_head *self, int idx);
 
 // --- define ---
 

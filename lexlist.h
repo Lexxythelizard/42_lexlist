@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:59:32 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/15 17:46:23 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/18 15:49:55 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	**lexlist__strip(
 int		lexlist__del_simple(
 			t_head *self);
 
-int		lexlist__remove_simple(
+int		lexlist__rm_simple(
 			t_head **self);
 
 void	**lexlist__strip_simple(

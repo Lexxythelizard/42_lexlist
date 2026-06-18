@@ -6,25 +6,23 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 16:41:30 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/18 13:45:24 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/18 16:55:06 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "../../struct/lists.h"
 #include "../../core/list_core.h"
 #include "../../lexlist.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+lexlist__pop() takes a pointer to head and 
+returns the content of the last element in list
+element will be removed from list
+automaticly updates head -> len and head -> tip
 */
-
-// --- prototype ---
-
-void	*lexlist__pop(t_head *self);
 
 // --- define ---
 

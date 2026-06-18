@@ -13,13 +13,13 @@
 			- test		lexlist__init()				:	WORKS	VALGRIND PROOF
 			- test		lexlist__insert()			:	WORKS	VALGRIND PROOF
 			- test		lexlist__pop_idx()			:	WORKS	VALGRIND PROOF
-			- test		lexlist__pop_()				:	
-			- test		lexlist__del()				:	
-			- test		lexlist__rm()				:	
-			- test		lexlist__strip()			:	
-			- test		lexlist__del_simple()		:	
-			- test		lexlist__rm_simple()		:	
-			- test		lexlist__strop_simple()		:	
+			- test		lexlist__pop_()				:	WORKS	VALGRIND PROOF
+			- test		lexlist__del()				:	WORKS	VALGRIND PROOF
+			- test		lexlist__rm()				:	WORKS	VALGRIND PROOF
+			- test		lexlist__strip()			:	WORKS	VALGRIND PROOF
+			- test		lexlist__del_simple()		:	WORKS	VALGRIND PROOF
+			- test		lexlist__rm_simple()		:	WORKS	VALGRIND PROOF
+			- test		lexlist__strip_simple()		:	WORKS	VALGRIND PROOF
 
 */
 
@@ -38,10 +38,12 @@ int	main(int argc, char **argv)
 	t_head	*head0;
 	t_head	*head1;
 	void	*temp0;
+	void	**contents;
 	char	*inp0;
 	char	*inp1;
 	char	*inp2;
 	char	*inp3;
+	int		i;
 
 	if (argc < 5)
 		return (0);
@@ -122,21 +124,52 @@ int	main(int argc, char **argv)
 	temp0 = lexlist__pop(head0);
 	printf("lexlist__append(head1, \"%s\");\n", (char*)(temp0));
 	lexlist__append(head1, temp0);
+	printf("print list head0 and head1 inkl tail\n\n");
+	lxy_print_head(head0);
+	lxy_print_tail(head0);
+	lxy_print_head(head1);
+	lxy_print_tail(head1);
+
+	printf("------------------------------------------------------\n");
+	printf("test 6: lexlist__del():\n");
+	printf("move the elements back and filling head1 with %s\n",
+		(char*)(head1 -> info));	
+	temp0 = lexlist__pop(head1);
+	lexlist__append(head0, temp0);
+	temp0 = lexlist__pop(head1);
+	lexlist__append(head0, temp0);
+	lexlist__append(head1, lxy_strdup((char*)(head1 -> info)));
+	lexlist__append(head1, lxy_strdup((char*)(head1 -> info)));
+	printf("print list head0 and head1 inkl tail\n\n");
+	lxy_print_head(head0);
+	lxy_print_tail(head0);
+	lxy_print_head(head1);
+	lxy_print_tail(head1);
+	printf("now calling lexlist__del_simple(head1 -> tail -> next);\n\n");
+	lexlist__rm_simple(&head1);
+	lxy_print_head(head1);
+
+	printf("------------------------------------------------------\n");
+	printf("test 7: lexlist__strip():\n");
+	printf("contents = lexlist_strip_simple(head0);\n");
+	contents = lexlist__strip_simple(&head0);
+	i = 0;
+	printf("display contents\n");
+	while (contents[i])
+	{
+		printf("contents %d: %s\n", i, (char*)(contents[i]));
+		i++;
+	}
+	i = 0;
+	printf("free contents\n");
+	while (contents[i])
+	{
+		free(contents[i]);
+		i++;
+	}
+	free(contents);
 
 	printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
-	free(inp0);
-	free(inp1);
-	free(inp2);
-	free(inp3);
-	//free(head0 -> tail -> next -> next);
-	/*
-	free(head0 -> tail -> next);
-	free(head0 -> tail);
-	*/
-	free(head1 -> tail -> next);
-	free(head1 -> tail);
-	free(head0);
-	free(head1);
 	return (0);
 }
 
